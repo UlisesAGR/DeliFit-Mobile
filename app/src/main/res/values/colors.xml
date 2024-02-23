@@ -80,4 +80,5 @@
     <color name="md_theme_dark_surfaceTint">#9DD67D</color>
     <color name="md_theme_dark_outlineVariant">#43483E</color>
     <color name="md_theme_dark_scrim">#000000</color>
+    <color name="ic_launcher_background">#386A1F</color>
 </resources>
