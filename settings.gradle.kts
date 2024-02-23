@@ -19,4 +19,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "DeliFit"
-include(":app")
+include(
+    ":app",
+    ":widgets",
+)

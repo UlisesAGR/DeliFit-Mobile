@@ -1,5 +1,5 @@
 /*
- * build.gradle.kts - Module App
+ * build.gradle.kts - Module app
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
@@ -61,6 +61,9 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":widgets"))
+
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.recyclerview)
