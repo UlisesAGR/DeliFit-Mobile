@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - graph.xml
+ - Created by Ulises Gonzalez on 23/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/graph"
+    app:startDestination="@id/homeFragment">
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.delifit.delifitmobile.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.delifit.delifitmobile.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.delifit.delifitmobile.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
+    <activity
+        android:id="@+id/containerActivity"
+        android:name="com.delifit.delifitmobile.ContainerActivity"
+        android:label="activity_container"
+        tools:layout="@layout/activity_container" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.delifit.delifitmobile.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>

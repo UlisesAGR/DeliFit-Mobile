@@ -3,4 +3,13 @@
  - Created by Ulises Gonzalez on 23/02/24
  - Copyright (c) 2023. All rights reserved.
 -->
-<resources />
+<resources>
+    <!--Strings Close Dialog-->
+    <string name="app_accept">Accept</string>
+    <string name="app_cancel">Cancel</string>
+    <string name="app_message">Message</string>
+    <string name="app_are_you_sure_about_exiting_the_app">Are you sure about exiting the app?</string>
+    <!--Strings Menu-->
+    <string name="app_home">Home</string>
+    <string name="app_favorites">Favorites</string>
+</resources>

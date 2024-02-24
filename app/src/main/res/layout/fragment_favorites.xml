@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - fragment_favorites.xml
+ - Created by Ulises Gonzalez on 23/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FavoritesFragment">
+
+</FrameLayout>
