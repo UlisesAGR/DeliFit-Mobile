@@ -1,8 +1,3 @@
-/*
- * build.gradle.kts - Module widgets
- * Created by Ulises Gonzalez on 23/02/24
- * Copyright (c) 2023. All rights reserved.
- */
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.devtools.ksp)
@@ -11,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.delifit.delifitmobile.widgets"
+    namespace = "com.delifit.delifitmobile.utils"
     compileSdk = 34
 
     defaultConfig {
@@ -41,7 +36,6 @@ android {
     }
     buildFeatures {
         buildConfig = true
-        viewBinding = true
     }
 }
 
@@ -50,15 +44,27 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.activity)
+    implementation(libs.androidx.fragment)
     implementation(libs.androidx.splashscreen)
+    implementation(libs.androidx.test.core)
 
     implementation(libs.com.glide)
     implementation(libs.com.material)
+    implementation(libs.com.okhttp3)
+    implementation(libs.com.hilt)
 
+    implementation(libs.org.coroutines)
+
+    implementation(libs.bundles.androidx.lifecycle.libs)
+    implementation(libs.bundles.com.retrofit.libs)
     implementation(libs.bundles.androidx.navigation)
 
+    ksp(libs.com.hilt.compiler)
     ksp(libs.com.glide.compiler)
 
-    androidTestImplementation(libs.androidTest.junit.junit)
-    androidTestImplementation(libs.androidTest.espresso.core)
+    testImplementation(libs.test.junit.junit)
+    testImplementation(libs.test.coroutines)
+    testImplementation(libs.test.robolectric.robolectric)
+    testImplementation(libs.bundles.test.mockito.libs)
 }

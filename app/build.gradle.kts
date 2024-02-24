@@ -44,16 +44,13 @@ android {
             resValue("string", "app_name", "DeliFit Debug")
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = "1.8"
     }
-
     buildFeatures {
         buildConfig = true
         viewBinding = true
@@ -62,6 +59,7 @@ android {
 
 dependencies {
 
+    implementation(project(":utils"))
     implementation(project(":widgets"))
 
     implementation(libs.androidx.core)

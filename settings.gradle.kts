@@ -22,4 +22,5 @@ rootProject.name = "DeliFit"
 include(
     ":app",
     ":widgets",
+    ":utils",
 )
