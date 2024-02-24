@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - widgets_text_styles.xml
+ - Created by Ulises Gonzalez on 23/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<resources>
+
+    <style name="widgets_titleText">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_title_text_size</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_titleText.bold">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_title_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_subtitleText">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_subtitle_text_size</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_subtitleText.bold">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_subtitle_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_normalText">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_normal_text_size</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_normalText.bold">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_normal_text_size</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="widgets_smallText">
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:textColor">@color/widgets_black</item>
+        <item name="android:textSize">@dimen/widgets_small_text_size</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+</resources>

@@ -9,7 +9,7 @@
     android:id="@+id/containerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ContainerActivity">
+    tools:context=".container.ContainerActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/containerFragmentContainerView"
@@ -27,7 +27,7 @@
         android:id="@+id/containerBottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/app_nav_color"
+        android:background="@color/widgets_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

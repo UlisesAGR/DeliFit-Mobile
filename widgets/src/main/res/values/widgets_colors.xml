@@ -81,6 +81,8 @@
     <color name="md_theme_dark_outlineVariant">#43483E</color>
     <color name="md_theme_dark_scrim">#C3C8BB</color>
     <!--Other colors-->
-    <color name="app_launcher_color">#386A1F</color>
-    <color name="app_nav_color">#F2F2F2</color>
+    <color name="widgets_launcher_color">#386A1F</color>
+    <color name="widgets_color">#EBF1E6</color>
+    <color name="widgets_white">#F2F2F2</color>
+    <color name="widgets_black">#1B1B1B</color>
 </resources>

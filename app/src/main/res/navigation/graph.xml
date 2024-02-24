@@ -10,27 +10,27 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.delifit.delifitmobile.HomeFragment"
+        android:name="com.delifit.delifitmobile.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.delifit.delifitmobile.DetailFragment"
+        android:name="com.delifit.delifitmobile.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" />
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.delifit.delifitmobile.MapFragment"
+        android:name="com.delifit.delifitmobile.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <activity
         android:id="@+id/containerActivity"
-        android:name="com.delifit.delifitmobile.ContainerActivity"
+        android:name="com.delifit.delifitmobile.container.ContainerActivity"
         android:label="activity_container"
         tools:layout="@layout/activity_container" />
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="com.delifit.delifitmobile.FavoritesFragment"
+        android:name="com.delifit.delifitmobile.favorites.FavoritesFragment"
         android:label="fragment_favorites"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

@@ -3,7 +3,7 @@
  - Created by Ulises Gonzalez on 23/02/24
  - Copyright (c) 2023. All rights reserved.
 -->
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Night application theme. -->
     <style name="Base.Theme.DeliFit" parent="Theme.Material3.Light.NoActionBar">
         <!--Night primary-->
@@ -39,5 +39,10 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_dark_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_dark_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_dark_inversePrimary</item>
+        <!--Night System-->
+        <item name="android:statusBarColor">@color/md_theme_light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/widgets_color</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
     </style>
 </resources>

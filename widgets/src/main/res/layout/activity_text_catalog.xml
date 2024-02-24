@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".text.TextCatalogActivity">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/widgets_padding_size">
+
+        <TextView
+            android:id="@+id/titleText"
+            style="@style/widgets_titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Title Text" />
+
+        <TextView
+            android:id="@+id/titleTextBold"
+            style="@style/widgets_titleText.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Title Text Bold" />
+
+        <TextView
+            android:id="@+id/subtitleText"
+            style="@style/widgets_subtitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Subtitle Text" />
+
+        <TextView
+            android:id="@+id/subtitleBoldText"
+            style="@style/widgets_subtitleText.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Subtitle Text Bold" />
+
+        <TextView
+            android:id="@+id/normalText"
+            style="@style/widgets_normalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Normal Text" />
+
+        <TextView
+            android:id="@+id/normalBoldText"
+            style="@style/widgets_normalText.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            tools:text="Normal Text Bold" />
+
+    </LinearLayout>
+
+</ScrollView>

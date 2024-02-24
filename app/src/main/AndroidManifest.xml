@@ -15,7 +15,7 @@
         android:theme="@style/Theme.DeliFit"
         tools:targetApi="31">
         <activity
-            android:name=".ContainerActivity"
+            android:name=".container.ContainerActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Splash.Theme.Starting"

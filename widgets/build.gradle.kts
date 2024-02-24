@@ -5,7 +5,6 @@
  */
 plugins {
     alias(libs.plugins.android.library)
-    alias(libs.plugins.devtools.ksp)
     alias(libs.plugins.android.kotlin)
     alias(libs.plugins.android.navigation)
 }
@@ -46,18 +45,18 @@ android {
 }
 
 dependencies {
+
+    implementation(project(":utils"))
+
     implementation(libs.androidx.core)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.splashscreen)
 
-    implementation(libs.com.glide)
     implementation(libs.com.material)
 
     implementation(libs.bundles.androidx.navigation)
-
-    ksp(libs.com.glide.compiler)
 
     androidTestImplementation(libs.androidTest.junit.junit)
     androidTestImplementation(libs.androidTest.espresso.core)

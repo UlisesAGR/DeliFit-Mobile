@@ -3,11 +3,12 @@
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile
+package com.delifit.delifitmobile.container
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.delifit.delifitmobile.R
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.materialDialog
 import com.delifit.delifitmobile.utils.onBackPressedHandler
