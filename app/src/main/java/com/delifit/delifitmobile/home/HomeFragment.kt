@@ -10,18 +10,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
-import com.delifit.delifitmobile.data.provider.RecipeProvider
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
-import com.delifit.delifitmobile.home.adapter.RecipeAdapter
+import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
+import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
+import com.delifit.delifitmobile.utils.collect
+import com.delifit.delifitmobile.utils.setEmptyStateVisibility
+import com.delifit.delifitmobile.utils.setRecyclerViewVisibility
 import com.delifit.delifitmobile.utils.toast
-import kotlinx.coroutines.launch
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
+    private val containerViewModel: ContainerViewModel by viewModels()
+    private lateinit var ingredientsAdapter: IngredientAdapter
     private lateinit var recipeAdapter: RecipeAdapter
 
     override fun onCreateView(
@@ -41,30 +49,59 @@ class HomeFragment : Fragment() {
     }
 
     private fun setInitUi() {
-        setAdapter()
-        setRecyclerView()
-        setAdapterList()
+        setIngredientsAdapter()
+        setIngredientsRecyclerView()
+        setRecipeAdapter()
+        setRecipeRecyclerView()
+        setFlows()
     }
 
-    private fun setAdapter() {
-        recipeAdapter =
-            RecipeAdapter(
-                onItemSelected = { recipe ->
-                    requireContext().toast(recipe.name)
+    private fun setIngredientsAdapter() {
+        ingredientsAdapter =
+            IngredientAdapter(
+                onItemSelected = { ingredient ->
+                    ingredientsAdapter.notifyDataChanged()
+                    requireContext().toast(ingredient?.name ?: "Nothing")
                 },
             )
     }
 
-    private fun setRecyclerView() {
-        binding.homeRecyclerView.apply {
+    private fun setIngredientsRecyclerView() {
+        binding.ingredientsRecyclerView.apply {
+            setHasFixedSize(true)
+            adapter = ingredientsAdapter
+        }
+    }
+
+    private fun setRecipeAdapter() {
+        recipeAdapter =
+            RecipeAdapter(
+                onItemSelected = { recipe ->
+                    findNavController().navigate(
+                        HomeFragmentDirections.actionHomeFragmentToDetailActivity(recipe.name),
+                    )
+                },
+            )
+    }
+
+    private fun setRecipeRecyclerView() {
+        binding.recipeRecyclerView.apply {
             setHasFixedSize(true)
             adapter = recipeAdapter
         }
     }
 
-    private fun setAdapterList() {
-        lifecycleScope.launch {
-            recipeAdapter.setList(RecipeProvider.recipe)
+    private fun setFlows() {
+        collect(containerViewModel.containerState) { state ->
+            ingredientsAdapter.setList(state.ingredientsList)
+            recipeAdapter.setList(state.recipeList)
+            setViewVisibility(recipeAdapter.itemCount)
         }
     }
+
+    private fun setViewVisibility(itemCount: Int) =
+        with(binding) {
+            homeConstraintLayout.setRecyclerViewVisibility(itemCount)
+            homeEmptyState.setEmptyStateVisibility(itemCount)
+        }
 }

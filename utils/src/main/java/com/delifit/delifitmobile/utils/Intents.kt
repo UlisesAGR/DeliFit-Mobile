@@ -61,7 +61,7 @@ fun OnBackPressedDispatcher.onBackPressedHandler(
         owner,
         object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
-                onClick.invoke()
+                onClick()
             }
         },
     )

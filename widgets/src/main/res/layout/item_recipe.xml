@@ -4,6 +4,7 @@
  - Copyright (c) 2023. All rights reserved.
 -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRecipeLayout"
     android:layout_width="wrap_content"
@@ -28,18 +29,71 @@
             style="@style/widgets_subtitleText.bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
             android:paddingHorizontal="@dimen/widgets_padding_size"
             android:paddingTop="@dimen/widgets_padding_size.small"
             tools:text="Name" />
 
         <TextView
-            android:id="@+id/caloriesTextView"
+            android:id="@+id/descriptionTextView"
             style="@style/widgets_normalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="2"
             android:paddingHorizontal="@dimen/widgets_padding_size"
-            android:paddingBottom="@dimen/widgets_padding_size.small"
-            tools:text="Calories" />
+            tools:text="Description" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/widgets_padding_size.small"
+            android:paddingHorizontal="@dimen/widgets_padding_size.small"
+            android:paddingBottom="@dimen/widgets_padding_size.small">
+
+            <ImageView
+                android:id="@+id/timeImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/widgets_image"
+                android:src="@drawable/ic_timer"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/timeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/widgets_margin_size.small"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="@+id/timeImageView"
+                app:layout_constraintStart_toEndOf="@+id/timeImageView"
+                app:layout_constraintTop_toTopOf="@+id/timeImageView"
+                tools:text="Time" />
+
+            <ImageView
+                android:id="@+id/levelImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/widgets_margin_size.big"
+                android:contentDescription="@string/widgets_image"
+                android:src="@drawable/ic_circle"
+                app:layout_constraintBottom_toBottomOf="@+id/timeTextView"
+                app:layout_constraintStart_toEndOf="@+id/timeTextView"
+                app:layout_constraintTop_toTopOf="@+id/timeTextView" />
+
+            <TextView
+                android:id="@+id/levelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/widgets_margin_size.small"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/levelImageView"
+                app:layout_constraintTop_toTopOf="@+id/levelImageView"
+                tools:text="Level" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

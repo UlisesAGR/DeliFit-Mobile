@@ -23,4 +23,5 @@ include(
     ":app",
     ":widgets",
     ":utils",
+    ":core",
 )

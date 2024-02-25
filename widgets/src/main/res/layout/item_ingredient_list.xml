@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - item_ingredient.xml
+ - Created by Ulises Gonzalez on 24/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemIngredientLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/widgets_padding_size.small"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/widgets_image"
+        android:src="@drawable/ic_point" />
+
+    <TextView
+        android:id="@+id/ingredientTextView"
+        style="@style/widgets_smallText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/widgets_padding_size.small"
+        android:paddingTop="2dp"
+        tools:ignore="RtlSymmetry"
+        tools:text="Tomato" />
+
+</LinearLayout>

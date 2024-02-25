@@ -12,8 +12,9 @@ import com.delifit.delifitmobile.R
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.materialDialog
 import com.delifit.delifitmobile.utils.onBackPressedHandler
-import com.delifit.delifitmobile.utils.setupNavController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ContainerActivity : AppCompatActivity() {
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityContainerBinding.inflate(layoutInflater)
@@ -28,17 +29,8 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private fun setInitUi() {
-        initNavigation()
         onBackPressedHandler()
     }
-
-    private fun initNavigation() =
-        with(binding) {
-            containerBottomNavigationView.setupNavController(
-                supportFragmentManager,
-                containerFragmentContainerView.id,
-            )
-        }
 
     private fun onBackPressedHandler() {
         onBackPressedDispatcher.onBackPressedHandler(this) {

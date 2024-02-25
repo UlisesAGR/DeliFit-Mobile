@@ -24,7 +24,7 @@ fun Context.materialDialog(
         dialog.dismiss()
     }
     .setPositiveButton(textPositiveButton) { dialog, _ ->
-        onClick.invoke()
+        onClick()
         dialog.dismiss()
     }
     .show()

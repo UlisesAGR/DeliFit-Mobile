@@ -59,6 +59,7 @@ android {
 
 dependencies {
 
+    implementation(project(":core"))
     implementation(project(":utils"))
     implementation(project(":widgets"))
 

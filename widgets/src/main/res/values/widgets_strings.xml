@@ -5,4 +5,7 @@
 -->
 <resources >
     <string name="widgets_image">image</string>
+    <string name="widgets_easy">Easy</string>
+    <string name="widgets_normal">Normal</string>
+    <string name="widgets_hard">Hard</string>
 </resources>

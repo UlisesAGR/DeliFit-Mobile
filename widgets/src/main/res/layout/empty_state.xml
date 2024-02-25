@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - empty_state_list.xml
+ - Created by Ulises Gonzalez on 10/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/emptyStateRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/emptyStateImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="@string/widgets_image"
+        android:src="@drawable/ic_empty"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        style="@style/widgets_titleText.bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:text="Title"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        style="@style/widgets_normalText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:visibility="gone"
+        tools:text="Description"
+        tools:visibility="visible" />
+
+</LinearLayout>

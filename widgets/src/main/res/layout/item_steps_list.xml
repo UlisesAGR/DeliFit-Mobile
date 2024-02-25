@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - item_ingredient.xml
+ - Created by Ulises Gonzalez on 24/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemIngredientLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="@dimen/widgets_margin_size.small"
+    tools:ignore="UseCompoundDrawables">
+
+    <TextView
+        android:id="@+id/numberTextView"
+        style="@style/widgets_normalText.bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/lineImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/lineImageView"
+        tools:ignore="RtlSymmetry"
+        tools:text="1" />
+
+    <ImageView
+        android:id="@+id/lineImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/widgets_margin_size.small"
+        android:contentDescription="@string/widgets_image"
+        android:src="@drawable/ic_line"
+        app:layout_constraintStart_toEndOf="@+id/numberTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/stepTextView"
+        style="@style/widgets_smallText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/widgets_margin_size.small"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lineImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

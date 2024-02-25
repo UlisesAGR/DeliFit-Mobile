@@ -1,9 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+ - activity_text_catalog.xml
+ - Created by Ulises Gonzalez on 24/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".text.TextCatalogActivity">
+    tools:context=".text.text.TextCatalogActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"

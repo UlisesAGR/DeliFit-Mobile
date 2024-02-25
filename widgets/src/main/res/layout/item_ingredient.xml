@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - item_ingredient.xml
+ - Created by Ulises Gonzalez on 24/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemIngredientLayout"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/widgets_padding_size.small"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ingredientMaterialCardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/foodImageView"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:layout_margin="@dimen/widgets_padding_size"
+            android:contentDescription="@string/widgets_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/il_food" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/nameTextView"
+        style="@style/widgets_normalText.bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingHorizontal="@dimen/widgets_padding_size"
+        android:paddingTop="@dimen/widgets_padding_size.small"
+        tools:text="Ingredient" />
+
+</LinearLayout>

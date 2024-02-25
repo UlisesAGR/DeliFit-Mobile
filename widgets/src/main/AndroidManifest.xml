@@ -3,7 +3,13 @@
 
     <application>
         <activity
-            android:name=".text.TextCatalogActivity"
+            android:name=".text.element.Element"
+            android:exported="false" />
+        <activity
+            android:name=".text.button.ButtonCatalogActivity"
+            android:exported="false" />
+        <activity
+            android:name=".text.text.TextCatalogActivity"
             android:exported="false" />
     </application>
 

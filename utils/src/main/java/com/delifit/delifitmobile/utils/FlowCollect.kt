@@ -22,7 +22,7 @@ fun <T> LifecycleOwner.collect(
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collect {
-                action.invoke(it)
+                action(it)
             }
         }
     }

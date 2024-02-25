@@ -12,12 +12,27 @@
         android:id="@+id/homeFragment"
         android:name="com.delifit.delifitmobile.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_detailActivity"
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.delifit.delifitmobile.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_detailFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_right" />
+    </fragment>
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.delifit.delifitmobile.map.MapFragment"
@@ -28,9 +43,4 @@
         android:name="com.delifit.delifitmobile.container.ContainerActivity"
         android:label="activity_container"
         tools:layout="@layout/activity_container" />
-    <fragment
-        android:id="@+id/favoritesFragment"
-        android:name="com.delifit.delifitmobile.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
-        tools:layout="@layout/fragment_favorites" />
 </navigation>

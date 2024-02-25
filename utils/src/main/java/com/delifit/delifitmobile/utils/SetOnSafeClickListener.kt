@@ -87,7 +87,7 @@ class SafeClick {
                 System.currentTimeMillis().also {
                     if (it > lastEmittedClickTimestamp + clickThreshold || it < lastEmittedClickTimestamp) {
                         lastEmittedClickTimestamp = it
-                        lambda.invoke()
+                        lambda()
                     }
                 }
             }
