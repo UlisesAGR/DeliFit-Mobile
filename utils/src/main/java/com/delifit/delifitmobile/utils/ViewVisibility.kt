@@ -16,3 +16,18 @@ fun View.show(): View {
     }
     return this
 }
+
+/**
+ * Validates if true gone the view
+ * @param visible of [Boolean]
+ */
+fun View.progressVisibility(visible: Boolean) =
+    if (visible) visibility = View.VISIBLE else visibility = View.GONE
+
+/**
+ * Validates if true gone the view
+ * @param visible of [Boolean]
+ */
+fun View.layoutVisibility(visible: Boolean) =
+    if (visible) visibility = View.GONE else visibility = View.VISIBLE
+

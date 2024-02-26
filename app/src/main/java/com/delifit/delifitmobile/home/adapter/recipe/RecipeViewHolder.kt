@@ -10,6 +10,7 @@ import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.LevelCooking
 import com.delifit.delifitmobile.utils.load
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
+import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.utils.toLevelCooking
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeBinding
@@ -24,19 +25,55 @@ class RecipeViewHolder(
         onItemSelected: (Recipe) -> Unit,
     ) = with(binding) {
         recipe.apply {
-            foodImageView.load(
-                image,
-                error = R.drawable.ic_error,
-            )
-            nameTextView.text = name
-            descriptionTextView.text = smallDescription
-            timeTextView.text = time
+            setImage(image)
+            setName(name)
+            setSmallDescription(smallDescription)
+            setTime(time)
             setStatus(level.toLevelCooking())
         }
         root.setOnSafeClickListener {
             onItemSelected(recipe)
         }
     }
+
+    private fun setImage(image: String?) =
+        with(binding.foodImageView)
+        {
+            if (!image.isNullOrEmpty()) {
+                load(
+                    image,
+                    error = R.drawable.ic_error,
+                )
+                show()
+            }
+        }
+
+    private fun setName(name: String?) =
+        with(binding.nameTextView)
+        {
+            if (!name.isNullOrEmpty()) {
+                text = name
+                show()
+            }
+        }
+
+    private fun setSmallDescription(description: String?) =
+        with(binding.smallDescriptionTextView)
+        {
+            if (!description.isNullOrEmpty()) {
+                text = description
+                show()
+            }
+        }
+
+    private fun setTime(time: String?) =
+        with(binding.timeTextView)
+        {
+            if (!time.isNullOrEmpty()) {
+                text = time
+                show()
+            }
+        }
 
     private fun setStatus(level: LevelCooking) =
         with(binding) {

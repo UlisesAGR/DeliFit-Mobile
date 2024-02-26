@@ -9,9 +9,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
@@ -19,7 +19,6 @@ import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
 import com.delifit.delifitmobile.utils.collect
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -27,7 +26,8 @@ class HomeFragment : Fragment() {
         FragmentHomeBinding.inflate(layoutInflater)
     }
 
-    private val containerViewModel: ContainerViewModel by viewModels()
+    private val containerViewModel: ContainerViewModel by activityViewModels()
+
     private lateinit var ingredientsAdapter: IngredientAdapter
     private lateinit var recipeAdapter: RecipeAdapter
 
@@ -61,15 +61,9 @@ class HomeFragment : Fragment() {
             IngredientAdapter(
                 onItemSelected = { ingredient ->
                     ingredientsAdapter.notifyDataChanged()
-                    filterByIngredient(ingredient)
+                    containerViewModel.filterByIngredient(ingredient)
                 },
             )
-    }
-
-    private fun filterByIngredient(ingredient: String) {
-        lifecycleScope.launch {
-            recipeAdapter.filterByIngredient(ingredient)
-        }
     }
 
     private fun setIngredientsRecyclerView() {

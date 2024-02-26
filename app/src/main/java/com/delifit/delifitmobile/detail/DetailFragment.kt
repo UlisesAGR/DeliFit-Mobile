@@ -21,6 +21,7 @@ import com.delifit.delifitmobile.detail.adapter.IngredientsListAdapter
 import com.delifit.delifitmobile.detail.adapter.StepsListAdapter
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.load
+import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.widgets.R
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -100,36 +101,71 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setImage(image: String) {
-        binding.recipeImageView.load(
-            image,
-            error = R.drawable.ic_error,
-        )
-    }
+    private fun setImage(image: String?) =
+        with(binding.recipeImageView)
+        {
+            if (!image.isNullOrEmpty()) {
+                load(
+                    image,
+                    error = R.drawable.ic_error,
+                )
+                show()
+            }
+        }
 
-    private fun setName(name: String) {
-        binding.nameTextView.text = name
-    }
+    private fun setName(name: String?) =
+        with(binding.nameTextView)
+        {
+            if (!name.isNullOrEmpty()) {
+                text = name
+                show()
+            }
+        }
 
-    private fun setSmallDescription(smallDescription: String) {
-        binding.smallDescriptionTextView.text = smallDescription
-    }
+    private fun setSmallDescription(smallDescription: String?) =
+        with(binding.smallDescriptionTextView)
+        {
+            if (!smallDescription.isNullOrEmpty()) {
+                text = smallDescription
+                show()
+            }
+        }
 
-    private fun setTime(time: String) {
-        binding.timeCardElement.setText(time)
-    }
+    private fun setTime(time: String?) =
+        with(binding.timeCardElement)
+        {
+            if (!time.isNullOrEmpty()) {
+                setElement(time)
+                show()
+            }
+        }
 
-    private fun setCalories(calories: String) {
-        binding.caloriesCardElement.setText(calories)
-    }
+    private fun setCalories(calories: String?) =
+        with(binding.caloriesCardElement)
+        {
+            if (!calories.isNullOrEmpty()) {
+                setElement(calories)
+                show()
+            }
+        }
 
-    private fun setLevel(level: String) {
-        binding.levelCardElement.setText(level)
-    }
+    private fun setLevel(level: String?) =
+        with(binding.levelCardElement)
+        {
+            if (!level.isNullOrEmpty()) {
+                setElement(level)
+                show()
+            }
+        }
 
-    private fun setDescription(description: String) {
-        binding.descriptionTextView.text = description
-    }
+    private fun setDescription(description: String?) =
+        with(binding.descriptionTextView)
+        {
+            if (!description.isNullOrEmpty()) {
+                text = description
+                show()
+            }
+        }
 
     private fun setStepsList(steps: List<Steps>) {
         stepsListAdapter.submitList(steps)

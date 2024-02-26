@@ -11,13 +11,13 @@ import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
-import com.delifit.delifitmobile.utils.ResponseStatus
+import com.delifit.delifitmobile.utils.parseError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import org.jetbrains.annotations.VisibleForTesting
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,43 +28,38 @@ class ContainerViewModel @Inject constructor(
 ) : ViewModel() {
     private var _containerState = MutableStateFlow(ContainerState())
     val containerState: StateFlow<ContainerState> = _containerState
-    private var recipeList: List<Recipe> = emptyList()
 
-    init {
-        getRecipesUseCase()
-    }
+    private var recipeListCurrent: List<Recipe> = emptyList()
 
-    private fun getRecipesUseCase() =
+    fun getRecipesUseCase() =
         viewModelScope.launch {
+            startLoading()
             getRecipesUseCase.invoke()
+                .catch { exception ->
+                    _containerState.update { state ->
+                        state.copy(
+                            message = exception.parseError().errorMessage,
+                        )
+                    }
+                }
                 .collect { response ->
-                    when (response) {
-                        is ResponseStatus.Loading ->
+                    if (response.isSuccessful()) {
+                        response.data?.let { data ->
+                            recipeListCurrent = data
                             _containerState.update { state ->
                                 state.copy(
-                                    loading = true,
+                                    recipeList = data,
                                 )
                             }
-
-                        is ResponseStatus.Success -> {
-                            response.data?.let { data ->
-                                recipeList = data
-                                _containerState.update { state ->
-                                    state.copy(
-                                        recipeList = data,
-                                    )
-                                }
-                            }
-                            getIngredientsListUseCase()
                         }
-
-                        is ResponseStatus.Error ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    message = response.message
-                                        ?: textsProvider.getErrorSavingRecipesLabel(),
-                                )
-                            }
+                        getIngredientsListUseCase()
+                    } else {
+                        _containerState.update { state ->
+                            state.copy(
+                                message = response.message
+                                    ?: textsProvider.getErrorGettingRecipesLabel(),
+                            )
+                        }
                     }
                 }
             resetUiState()
@@ -73,37 +68,46 @@ class ContainerViewModel @Inject constructor(
     private fun getIngredientsListUseCase() =
         viewModelScope.launch {
             getIngredientsListUseCase.invoke()
+                .catch { exception ->
+                    _containerState.update { state ->
+                        state.copy(
+                            message = exception.parseError().errorMessage,
+                        )
+                    }
+                }
                 .collect { response ->
-                    when (response) {
-                        is ResponseStatus.Loading -> {}
-                        is ResponseStatus.Success -> {
-                            response.data?.let { data ->
-                                _containerState.update { state ->
-                                    state.copy(
-                                        loading = false,
-                                        ingredientsList = data,
-                                    )
-                                }
-                            }
+                    response.let { data ->
+                        _containerState.update { state ->
+                            state.copy(
+                                loading = false,
+                                ingredientsList = data,
+                            )
                         }
-
-                        is ResponseStatus.Error ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    message = response.message
-                                        ?: textsProvider.getErrorGettingIngredientsLabel(),
-                                )
-                            }
                     }
                 }
             resetUiState()
         }
 
-    fun getRecipes() =
+    fun filterByIngredient(ingredient: String) =
         viewModelScope.launch {
             _containerState.update { state ->
                 state.copy(
-                    recipeList = recipeList,
+                    recipeList = recipeListCurrent.filter { recipe ->
+                        recipe.ingredients.any { item ->
+                            item.lowercase().contains(ingredient.lowercase())
+                        }
+                    },
+                )
+            }
+        }
+
+    fun filterByName(ingredient: String) =
+        viewModelScope.launch {
+            _containerState.update { state ->
+                state.copy(
+                    recipeList = recipeListCurrent.filter { recipe ->
+                        recipe.name?.lowercase()?.contains(ingredient.lowercase()) ?: false
+                    },
                 )
             }
         }
@@ -117,10 +121,16 @@ class ContainerViewModel @Inject constructor(
             }
         }
 
-    @VisibleForTesting
-    private fun searchRecipe(recipeId: Int): Recipe? {
-        return recipeList.find { recipe ->
+    private fun searchRecipe(recipeId: Int): Recipe? =
+        recipeListCurrent.find { recipe ->
             recipe.id == recipeId
+        }
+
+    private fun startLoading() {
+        _containerState.update { state ->
+            state.copy(
+                loading = true,
+            )
         }
     }
 

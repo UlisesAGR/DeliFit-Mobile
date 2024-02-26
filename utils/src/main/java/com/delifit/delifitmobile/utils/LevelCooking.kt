@@ -11,8 +11,8 @@ enum class LevelCooking {
     HARD,
 }
 
-fun String.toLevelCooking(): LevelCooking =
-    when (this.lowercase()) {
+fun String?.toLevelCooking(): LevelCooking =
+    when (this?.lowercase() ?: "normal") {
         "easy" -> LevelCooking.EASY
         "normal" -> LevelCooking.NORMAL
         "hard" -> LevelCooking.HARD

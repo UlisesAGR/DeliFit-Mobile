@@ -9,7 +9,7 @@ import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
 
 data class ContainerState(
-    val loading: Boolean = true,
+    val loading: Boolean = false,
     val message: String = "",
     val recipeList: List<Recipe> = emptyList(),
     val ingredientsList: List<Ingredient> = emptyList(),

@@ -14,10 +14,8 @@ import com.delifit.delifitmobile.widgets.databinding.ItemRecipeSearchBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-@SuppressLint("NotifyDataSetChanged")
 class RecipeSearchAdapter(
-    private var recipeList: List<Recipe> = mutableListOf(),
-    private var filterRecipeList: MutableList<Recipe> = mutableListOf(),
+    private var recipeList: MutableList<Recipe> = mutableListOf(),
     private val onItemSelected: (Recipe) -> Unit,
 ) : RecyclerView.Adapter<RecipeSearchViewHolder>() {
     override fun onCreateViewHolder(
@@ -36,31 +34,15 @@ class RecipeSearchAdapter(
         holder: RecipeSearchViewHolder,
         position: Int,
     ) {
-        holder.render(filterRecipeList[position], onItemSelected)
+        holder.render(recipeList[position], onItemSelected)
     }
 
-    override fun getItemCount(): Int = filterRecipeList.size
+    override fun getItemCount(): Int = recipeList.size
 
+    @SuppressLint("NotifyDataSetChanged")
     suspend fun setList(list: List<Recipe>) =
         withContext(Dispatchers.Main) {
-            recipeList = list
-            filterRecipeList = recipeList.toMutableList()
-            notifyDataSetChanged()
-        }
-
-    suspend fun filterByName(ingredient: String?) {
-        ingredient?.let {
-            val newList =
-                recipeList.filter { recipe ->
-                    recipe.name.lowercase().contains(ingredient.lowercase())
-                }
-            updateList(newList)
-        }
-    }
-
-    private suspend fun updateList(items: List<Recipe>) =
-        withContext(Dispatchers.Main) {
-            filterRecipeList = items.toMutableList()
+            recipeList = list.toMutableList()
             notifyDataSetChanged()
         }
 }

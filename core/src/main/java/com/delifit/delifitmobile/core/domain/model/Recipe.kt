@@ -9,17 +9,17 @@ import com.delifit.delifitmobile.core.data.network.response.RecipesResponse
 
 data class Recipe(
     var id: Int,
-    var name: String,
-    var description: String,
-    var smallDescription: String,
-    var time: String,
-    var calories: String,
-    var level: String,
+    var name: String?,
+    var description: String?,
+    var smallDescription: String?,
+    var time: String?,
+    var calories: String?,
+    var level: String?,
     var ingredients: List<String>,
     var steps: List<Steps>,
-    var image: String,
-    var latitude: String,
-    var longitude: String,
+    var image: String?,
+    var latitude: String?,
+    var longitude: String?,
 )
 
 fun RecipesResponse.toDomain(): Recipe =

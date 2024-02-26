@@ -15,9 +15,6 @@ class TextsProvider @Inject constructor(
 ) {
     private val resource = appContext.resources
 
-    fun getErrorSavingRecipesLabel(): String =
-        resource.getString(R.string.widgets_error_saving_recipes)
-
-    fun getErrorGettingIngredientsLabel(): String =
-        resource.getString(R.string.widgets_error_getting_ingredients)
+    fun getErrorGettingRecipesLabel(): String =
+        resource.getString(R.string.widgets_error_getting_recipes)
 }

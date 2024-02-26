@@ -15,7 +15,7 @@ import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.materialDialog
 import com.delifit.delifitmobile.utils.onBackPressedHandler
-import com.delifit.delifitmobile.widgets.text.dialog.loader.LoaderDialogConfig
+import com.delifit.delifitmobile.utils.progressVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,7 +25,6 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private val containerViewModel: ContainerViewModel by viewModels()
-    private lateinit var loaderDialogConfig: LoaderDialogConfig
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val splash = installSplashScreen()
@@ -36,34 +35,22 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private fun setInitUi() {
-        openLoaderDialog()
+        containerViewModel.getRecipesUseCase()
         onBackPressedHandler()
         setFlows()
     }
 
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
-            setLoaderVisibility(state.loading)
             showDialog(state.message)
+            setViewVisibility(state.loading)
         }
     }
 
-    private fun setLoaderVisibility(loading: Boolean) {
-        if (!loading) {
-            loaderDialogConfig.dismissLoaderDialog()
+    private fun setViewVisibility(loading: Boolean) =
+        with(binding) {
+            progressLayout.progressVisibility(loading)
         }
-    }
-
-    private fun openLoaderDialog() {
-        loaderDialogConfig =
-            LoaderDialogConfig()
-                .also { config ->
-                    config.apply {
-                        showLoaderDialog(supportFragmentManager)
-                        setCancelable(false)
-                    }
-                }
-    }
 
     private fun showDialog(message: String) {
         materialDialog(

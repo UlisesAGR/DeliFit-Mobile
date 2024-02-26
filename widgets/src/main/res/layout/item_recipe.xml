@@ -22,7 +22,9 @@
             android:layout_height="125dp"
             android:contentDescription="@string/widgets_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/il_food" />
+            android:src="@drawable/il_food"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/nameTextView"
@@ -32,16 +34,20 @@
             android:maxLines="1"
             android:paddingHorizontal="@dimen/widgets_padding_size"
             android:paddingTop="@dimen/widgets_padding_size.small"
-            tools:text="Name" />
+            android:visibility="gone"
+            tools:text="Name"
+            tools:visibility="visible" />
 
         <TextView
-            android:id="@+id/descriptionTextView"
+            android:id="@+id/smallDescriptionTextView"
             style="@style/widgets_normalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"
             android:paddingHorizontal="@dimen/widgets_padding_size"
-            tools:text="Description" />
+            android:visibility="gone"
+            tools:text="Description"
+            tools:visibility="visible" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -66,10 +72,12 @@
                 android:layout_height="match_parent"
                 android:layout_marginStart="@dimen/widgets_margin_size.small"
                 android:gravity="center"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/timeImageView"
                 app:layout_constraintStart_toEndOf="@+id/timeImageView"
                 app:layout_constraintTop_toTopOf="@+id/timeImageView"
-                tools:text="Time" />
+                tools:text="Time"
+                tools:visibility="visible" />
 
             <ImageView
                 android:id="@+id/levelImageView"

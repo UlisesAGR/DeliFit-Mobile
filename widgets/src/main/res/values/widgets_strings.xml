@@ -4,10 +4,15 @@
  - Copyright (c) 2023. All rights reserved.
 -->
 <resources >
-    <string name="widgets_image">image</string>
+    <string name="widgets_image">Image</string>
     <string name="widgets_easy">Easy</string>
     <string name="widgets_normal">Normal</string>
     <string name="widgets_hard">Hard</string>
-    <string name="widgets_error_saving_recipes">Error saving recipes</string>
-    <string name="widgets_error_getting_ingredients">Error getting ingredients</string>
+    <!--TextsProvider-->
+    <string name="widgets_error_getting_recipes">Error getting recipes</string>
+    <!--IngredientProvider-->
+    <string name="widgets_cheese">Cheese</string>
+    <string name="widgets_tomato">Tomato</string>
+    <string name="widgets_egg">Egg</string>
+    <string name="widgets_lettuce">Lettuce</string>
 </resources>

@@ -1,0 +1,18 @@
+<!--
+ - widgets_strings.xml widgets es
+ - Created by Ulises Gonzalez on 23/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<resources >
+    <string name="widgets_image">Imagen</string>
+    <string name="widgets_easy">Fácil</string>
+    <string name="widgets_normal">Normal</string>
+    <string name="widgets_hard">Difícil</string>
+    <!--TextsProvider-->
+    <string name="widgets_error_getting_recipes">Erorr al obtener las recetas</string>
+    <!--IngredientProvider-->
+    <string name="widgets_cheese">Queso</string>
+    <string name="widgets_tomato">Tomate</string>
+    <string name="widgets_egg">Huevos</string>
+    <string name="widgets_lettuce">Lechuga</string>
+</resources>

@@ -11,8 +11,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentSearchBinding
@@ -23,7 +21,6 @@ import com.delifit.delifitmobile.utils.onTetWatcher
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.utils.showSoftKeyboard
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -32,6 +29,7 @@ class SearchFragment : Fragment() {
     }
 
     private val containerViewModel: ContainerViewModel by activityViewModels()
+
     private lateinit var recipeSearchAdapter: RecipeSearchAdapter
 
     override fun onCreateView(
@@ -51,7 +49,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun setInitUi() {
-        containerViewModel.getRecipes()
         setRecipeSearchAdapter()
         setRecipeSearchRecyclerView()
         setFocusFilter()
@@ -67,6 +64,7 @@ class SearchFragment : Fragment() {
                     findNavController().navigate(
                         SearchFragmentDirections.actionSearchFragmentToDetailFragment(recipe.id),
                     )
+                    clearFilter()
                 },
             )
     }
@@ -87,18 +85,12 @@ class SearchFragment : Fragment() {
                 )
             }
             nameEditText.onTetWatcher { name ->
-                filterByName(name)
+                containerViewModel.filterByName(name)
             }
             clearImageView.setOnSafeClickListener {
                 clearFilter()
             }
         }
-
-    private fun filterByName(name: String?) {
-        lifecycleScope.launch {
-            recipeSearchAdapter.filterByName(name)
-        }
-    }
 
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->

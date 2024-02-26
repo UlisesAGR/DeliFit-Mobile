@@ -12,4 +12,7 @@
     <declare-styleable name="Element">
         <attr name="imageCardElement" format="reference" />
     </declare-styleable>
+    <declare-styleable name="Progress">
+        <attr name="textProgress" format="string" />
+    </declare-styleable>
 </resources>

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.load
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
+import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeSearchBinding
 
@@ -20,15 +21,42 @@ class RecipeSearchViewHolder(
         onItemSelected: (Recipe) -> Unit,
     ) = with(binding) {
         recipe.apply {
-            recipeImageView.load(
-                image,
-                error = R.drawable.ic_error,
-            )
-            nameTextView.text = name
-            smallDescriptionTextView.text = smallDescription
+            setImage(image)
+            setName(name)
+            setSmallDescription(smallDescription)
         }
         root.setOnSafeClickListener {
             onItemSelected(recipe)
         }
     }
+
+    private fun setImage(image: String?) =
+        with(binding.recipeImageView)
+        {
+            if (!image.isNullOrEmpty()) {
+                load(
+                    image,
+                    error = R.drawable.ic_error,
+                )
+                show()
+            }
+        }
+
+    private fun setName(name: String?) =
+        with(binding.nameTextView)
+        {
+            if (!name.isNullOrEmpty()) {
+                text = name
+                show()
+            }
+        }
+
+    private fun setSmallDescription(description: String?) =
+        with(binding.smallDescriptionTextView)
+        {
+            if (!description.isNullOrEmpty()) {
+                text = description
+                show()
+            }
+        }
 }

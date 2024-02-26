@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_accept">Aceptar</string>
+    <string name="app_cancel">Cancelar</string>
+    <string name="app_message">Mensaje</string>
+    <string name="app_are_you_sure_about_exiting_the_app">Estas seguro de salir de la app?</string>
+    <string name="app_recipes">Recetas</string>
+    <string name="app_search">Buscar receta</string>
+    <string name="app_ingredients">Ingredientes</string>
+    <string name="app_steeps">Pasos</string>
+    <string name="app_back">Regresar</string>
+    <string name="origin">Origen</string>
+    <string name="app_description">Descripción</string>
+</resources>

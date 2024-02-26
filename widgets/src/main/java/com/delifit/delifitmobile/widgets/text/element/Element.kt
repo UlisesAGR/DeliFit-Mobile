@@ -10,7 +10,9 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.delifit.delifitmobile.utils.AppLog
+import com.delifit.delifitmobile.utils.LevelCooking
 import com.delifit.delifitmobile.utils.show
+import com.delifit.delifitmobile.utils.toLevelCooking
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.CardElementBinding
 
@@ -47,7 +49,25 @@ class Element @JvmOverloads constructor(
         }
     }
 
-    fun setText(text: String) {
+    fun setElement(text: String) {
+        setText(text)
+        setStatus(text.toLevelCooking())
+    }
+
+    private fun setText(text: String) {
         binding.textTextView.text = text
     }
+
+    private fun setStatus(level: LevelCooking) =
+        with(binding) {
+            context.apply {
+                when (level) {
+                    LevelCooking.EASY -> textTextView.text = getString(R.string.widgets_easy)
+
+                    LevelCooking.NORMAL -> textTextView.text = getString(R.string.widgets_normal)
+
+                    LevelCooking.HARD -> textTextView.text = getString(R.string.widgets_hard)
+                }
+            }
+        }
 }
