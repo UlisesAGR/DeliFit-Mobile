@@ -6,7 +6,7 @@
 package com.delifit.delifitmobile.core.data.provider
 
 import com.delifit.delifitmobile.core.domain.model.Recipe
-import com.delifit.delifitmobile.utils.LevelCooking
+import com.delifit.delifitmobile.core.domain.model.Steps
 import com.delifit.delifitmobile.widgets.R
 import javax.inject.Inject
 
@@ -16,55 +16,80 @@ class RecipeProvider @Inject constructor() {
             Recipe(
                 id = 1,
                 name = "Tostadas",
-                description = "Delisiosa crocante tostada",
+                description = "Delisiosa crocante tostada para disfrutar con la familia",
                 smallDescription = "Delisiosa crocante tostada",
                 time = "45 min",
                 calories = "261 kcal",
-                level = LevelCooking.EASY,
-                ingredients = "Papas",
-                steps = "1 - Licuar",
+                level = "Easy",
+                ingredients = listOf("Tomato", "Spice", "Onion", "Sugar"),
+                steps = listOf(
+                    Steps(
+                        number = 1,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 2,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 3,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                ),
                 image = R.drawable.il_food,
                 latitude = "1.0.1",
                 longitude = "2.0.2",
             ),
             Recipe(
                 id = 2,
-                name = "Tostadas",
-                description = "Delisiosa crocante tostada",
+                name = "Pizza",
+                description = "Delisiosa crocante tostada para disfrutar con la familia",
                 smallDescription = "Delisiosa crocante tostada",
                 time = "45 min",
                 calories = "261 kcal",
-                level = LevelCooking.NORMAL,
-                ingredients = "Papas",
-                steps = "1 - Licuar",
+                level = "Normal",
+                ingredients = listOf("Tomato", "Spice", "Onion", "Sugar"),
+                steps = listOf(
+                    Steps(
+                        number = 1,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 2,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 3,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                ),
                 image = R.drawable.il_food,
                 latitude = "1.0.1",
                 longitude = "2.0.2",
             ),
             Recipe(
                 id = 3,
-                name = "Tostadas",
-                description = "Delisiosa crocante tostada",
+                name = "Hamburgesa",
+                description = "Delisiosa crocante tostada para disfrutar con la familia",
                 smallDescription = "Delisiosa crocante tostada",
                 time = "45 min",
                 calories = "261 kcal",
-                level = LevelCooking.HARD,
-                ingredients = "Papas",
-                steps = "1 - Licuar",
-                image = R.drawable.il_food,
-                latitude = "1.0.1",
-                longitude = "2.0.2",
-            ),
-            Recipe(
-                id = 4,
-                name = "Tostadas",
-                description = "Delisiosa crocante tostada",
-                smallDescription = "Delisiosa crocante tostada",
-                time = "45 min",
-                calories = "261 kcal",
-                level = LevelCooking.HARD,
-                ingredients = "Papas",
-                steps = "1 - Licuar",
+                level = "Hard",
+                ingredients = listOf("Tomato", "Spice", "Onion", "Sugar"),
+                steps = listOf(
+                    Steps(
+                        number = 1,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 2,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                    Steps(
+                        number = 3,
+                        description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                    ),
+                ),
                 image = R.drawable.il_food,
                 latitude = "1.0.1",
                 longitude = "2.0.2",

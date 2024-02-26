@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_successfully_saved_recipes">Successfully saved recipes</string>
+    <string name="app_error_saving_recipes">Error saving recipes</string>
+    <string name="app_error_getting_ingredients">Error getting ingredients</string>
+    <string name="app_error_getting_recipe">Error getting recipe</string>
+    <string name="app_error_getting_recipe_by_id">Error getting recipe by id</string>
+</resources>

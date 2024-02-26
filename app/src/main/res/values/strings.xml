@@ -11,7 +11,7 @@
     <string name="app_are_you_sure_about_exiting_the_app">Are you sure about exiting the app?</string>
     <!--Strings Home Fragment-->
     <string name="app_recipes">Recipes</string>
-    <string name="app_search">Search</string>
+    <string name="app_search">Search Recipe</string>
     <!--Strings Empty State-->
     <string name="app_empty_list">Empty List</string>
     <string name="app_here_you_will_be_able_to_see_the_recipes">Here you will be able to see the recipes when you have one</string>

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.LevelCooking
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
+import com.delifit.delifitmobile.utils.toLevelCooking
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeBinding
 
@@ -26,17 +27,17 @@ class RecipeViewHolder(
             nameTextView.text = name
             descriptionTextView.text = smallDescription
             timeTextView.text = time
-            setStatus(level)
+            setStatus(level.toLevelCooking())
         }
         root.setOnSafeClickListener {
             onItemSelected(recipe)
         }
     }
 
-    private fun setStatus(status: LevelCooking) =
+    private fun setStatus(level: LevelCooking) =
         with(binding) {
             context.apply {
-                when (status) {
+                when (level) {
                     LevelCooking.EASY -> {
                         levelImageView.setColorFilter(getColor(R.color.widgets_easy))
                         levelTextView.text = getString(R.string.widgets_easy)

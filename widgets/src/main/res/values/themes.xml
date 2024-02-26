@@ -56,4 +56,14 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.DeliFit</item>
     </style>
 
+    <style name="FullScreenLoaderDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="actionMenuTextColor">@color/widgets_white</item>
+        <item name="android:windowBackground">@color/widgets_white</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@color/md_theme_light_background</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/widgets_color</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+    </style>
+
 </resources>

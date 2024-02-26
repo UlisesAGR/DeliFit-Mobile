@@ -14,22 +14,22 @@ class IngredientProvider @Inject constructor() {
         listOf(
             Ingredient(
                 id = 1,
-                name = "Tomate",
+                name = "Tomato",
                 image = R.drawable.il_food,
             ),
             Ingredient(
                 id = 2,
-                name = "Salsa",
+                name = "Spice",
                 image = R.drawable.il_food,
             ),
             Ingredient(
                 id = 3,
-                name = "Lechuga",
+                name = "Onion",
                 image = R.drawable.il_food,
             ),
             Ingredient(
                 id = 4,
-                name = "Cebolla",
+                name = "Sugar",
                 image = R.drawable.il_food,
             ),
         )

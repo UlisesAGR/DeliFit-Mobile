@@ -10,3 +10,11 @@ enum class LevelCooking {
     NORMAL,
     HARD,
 }
+
+fun String.toLevelCooking(): LevelCooking =
+    when (this.uppercase()) {
+        "easy" -> LevelCooking.EASY
+        "normal" -> LevelCooking.NORMAL
+        "hard" -> LevelCooking.HARD
+        else -> LevelCooking.NORMAL
+    }

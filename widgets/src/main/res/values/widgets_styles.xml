@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - widgets_styles.xml
+ - Created by Ulises Gonzalez on 25/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<resources>
+
+    <style name="Ripple">
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Ripple.Borderless" parent="Ripple">
+        <item name="android:padding">@dimen/widgets_padding_size.small</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+</resources>

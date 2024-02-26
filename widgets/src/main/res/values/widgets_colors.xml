@@ -90,4 +90,5 @@
     <color name="widgets_easy">#6FF7F7</color>
     <color name="widgets_normal">#9DD67D</color>
     <color name="widgets_hard">#BA1A1A</color>
+    <color name="widgets_ripple">#36343B</color>
 </resources>

@@ -8,6 +8,7 @@ package com.delifit.delifitmobile.home.adapter.ingredient
 import android.annotation.SuppressLint
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Ingredient
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.setImageViewAnimation
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.widgets.R
@@ -21,22 +22,25 @@ class IngredientViewHolder(
 
     fun render(
         ingredient: Ingredient,
-        onItemSelected: (Ingredient?) -> Unit,
+        onItemSelected: (String) -> Unit,
     ) = with(binding) {
         ingredient.apply {
             foodImageView.setImageResource(image)
             nameTextView.text = name
         }
-        setSelectedIngredient(ingredient)
+        setSelectedIngredient(ingredient.name)
         ingredientMaterialCardView.setOnSafeClickListener {
-            selectedItem = if (ingredient != selectedItem) {
-                ingredient
-            } else null
+            selectedItem =
+                if (ingredient.name != selectedItem) {
+                    ingredient.name
+                } else {
+                    EMPTY_STRING
+                }
             onItemSelected(selectedItem)
         }
     }
 
-    private fun setSelectedIngredient(ingredient: Ingredient) =
+    private fun setSelectedIngredient(ingredient: String) =
         with(binding) {
             context.apply {
                 if (ingredient == selectedItem) {
@@ -55,6 +59,6 @@ class IngredientViewHolder(
         }
 
     companion object {
-        private var selectedItem: Ingredient? = null
+        var selectedItem: String = ""
     }
 }

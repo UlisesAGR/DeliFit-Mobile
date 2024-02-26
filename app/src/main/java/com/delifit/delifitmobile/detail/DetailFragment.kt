@@ -10,37 +10,29 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.model.Steps
 import com.delifit.delifitmobile.databinding.FragmentDetailBinding
 import com.delifit.delifitmobile.detail.adapter.IngredientsListAdapter
 import com.delifit.delifitmobile.detail.adapter.StepsListAdapter
+import com.delifit.delifitmobile.utils.collect
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
     private val binding by lazy(LazyThreadSafetyMode.NONE) {
         FragmentDetailBinding.inflate(layoutInflater)
     }
 
+    private val containerViewModel: ContainerViewModel by viewModels()
     private val detailArgs: DetailFragmentArgs by navArgs()
+
     private lateinit var ingredientsListAdapter: IngredientsListAdapter
     private lateinit var stepsListAdapter: StepsListAdapter
-
-    private val ingredients = mutableListOf("Tomato", "Onion", "Sugar")
-    private val steps = mutableListOf(
-        Steps(
-            number = 1,
-            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        ),
-        Steps(
-            number = 2,
-            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        ),
-        Steps(
-            number = 3,
-            description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-        ),
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,44 +55,9 @@ class DetailFragment : Fragment() {
         setIngredientsListRecyclerView()
         stepsListAdapter = StepsListAdapter()
         setStepsListRecyclerView()
-        setDataToView()
+        containerViewModel.readRecipeByIdUseCase(detailArgs.id)
         setListeners()
-    }
-
-    private fun setDataToView() {
-        setName()
-        setSmallDescription()
-        setTime()
-        setCalories()
-        setLevel()
-        setDescription()
-        setIngredientsList(ingredients)
-        setStepsList(steps)
-    }
-
-    private fun setName() {
-        binding.nameTextView.text = "Tostadas"
-    }
-
-    private fun setSmallDescription() {
-        binding.smallDescriptionTextView.text = "Delisiosa crocante tostada"
-    }
-
-    private fun setTime() {
-        binding.timeCardElement.setText("45 min")
-    }
-
-    private fun setCalories() {
-        binding.caloriesCardElement.setText("239 kcal")
-    }
-
-    private fun setLevel() {
-        binding.levelCardElement.setText("Easy")
-    }
-
-    private fun setDescription() {
-        binding.descriptionTextView.text =
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
+        setFlows()
     }
 
     private fun setIngredientsListRecyclerView() {
@@ -110,10 +67,6 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setIngredientsList(ingredients: MutableList<String>) {
-        ingredientsListAdapter.submitList(ingredients)
-    }
-
     private fun setStepsListRecyclerView() {
         binding.stepsListRecyclerView.apply {
             setHasFixedSize(true)
@@ -121,21 +74,64 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setStepsList(steps: MutableList<Steps>) {
+    private fun setFlows() {
+        collect(containerViewModel.containerState) { state ->
+            setDataToView(state.recipe)
+        }
+    }
+
+    private fun setDataToView(state: Recipe) {
+        state.apply {
+            setName(name)
+            setSmallDescription(smallDescription)
+            setTime(time)
+            setCalories(calories)
+            setLevel(level)
+            setDescription(description)
+            setIngredientsList(ingredients)
+            setStepsList(steps)
+        }
+    }
+
+    private fun setName(name: String) {
+        binding.nameTextView.text = name
+    }
+
+    private fun setSmallDescription(smallDescription: String) {
+        binding.smallDescriptionTextView.text = smallDescription
+    }
+
+    private fun setTime(time: String) {
+        binding.timeCardElement.setText(time)
+    }
+
+    private fun setCalories(calories: String) {
+        binding.caloriesCardElement.setText(calories)
+    }
+
+    private fun setLevel(level: String) {
+        binding.levelCardElement.setText(level)
+    }
+
+    private fun setDescription(description: String) {
+        binding.descriptionTextView.text = description
+    }
+
+    private fun setStepsList(steps: List<Steps>) {
         stepsListAdapter.submitList(steps)
+    }
+
+    private fun setIngredientsList(ingredients: List<String>) {
+        ingredientsListAdapter.submitList(ingredients)
     }
 
     private fun setListeners() =
         with(binding) {
             toolbar.setNavigationOnClickListener {
-                findNavController().navigate(
-                    DetailFragmentDirections.actionDetailFragmentToHomeFragment(),
-                )
+                findNavController().popBackStack()
             }
             backButton.setOnClickListener {
-                findNavController().navigate(
-                    DetailFragmentDirections.actionDetailFragmentToHomeFragment(),
-                )
+                findNavController().popBackStack()
             }
         }
 }

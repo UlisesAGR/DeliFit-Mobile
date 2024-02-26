@@ -11,16 +11,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
 import com.delifit.delifitmobile.utils.collect
-import com.delifit.delifitmobile.utils.setEmptyStateVisibility
-import com.delifit.delifitmobile.utils.setRecyclerViewVisibility
-import com.delifit.delifitmobile.utils.toast
+import com.delifit.delifitmobile.utils.setOnSafeClickListener
+import com.delifit.delifitmobile.widgets.text.dialog.loader.LoaderDialogConfig
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -29,6 +30,7 @@ class HomeFragment : Fragment() {
     }
 
     private val containerViewModel: ContainerViewModel by viewModels()
+    private lateinit var loaderDialogConfig: LoaderDialogConfig
     private lateinit var ingredientsAdapter: IngredientAdapter
     private lateinit var recipeAdapter: RecipeAdapter
 
@@ -49,10 +51,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun setInitUi() {
+        openLoaderDialog()
         setIngredientsAdapter()
         setIngredientsRecyclerView()
         setRecipeAdapter()
         setRecipeRecyclerView()
+        setListeners()
         setFlows()
     }
 
@@ -61,9 +65,15 @@ class HomeFragment : Fragment() {
             IngredientAdapter(
                 onItemSelected = { ingredient ->
                     ingredientsAdapter.notifyDataChanged()
-                    requireContext().toast(ingredient?.name ?: "Nothing")
+                    filterByIngredient(ingredient)
                 },
             )
+    }
+
+    private fun filterByIngredient(ingredient: String) {
+        lifecycleScope.launch {
+            recipeAdapter.filterByIngredient(ingredient)
+        }
     }
 
     private fun setIngredientsRecyclerView() {
@@ -78,7 +88,7 @@ class HomeFragment : Fragment() {
             RecipeAdapter(
                 onItemSelected = { recipe ->
                     findNavController().navigate(
-                        HomeFragmentDirections.actionHomeFragmentToDetailActivity(recipe.name),
+                        HomeFragmentDirections.actionHomeFragmentToDetailActivity(recipe.id),
                     )
                 },
             )
@@ -91,17 +101,38 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setListeners() =
+        with(binding) {
+            searchView.setOnSafeClickListener {
+                ingredientsAdapter.resetSelectedItem()
+                findNavController().navigate(
+                    HomeFragmentDirections.actionHomeFragmentToSearchFragment(),
+                )
+            }
+        }
+
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
+            setLoaderVisibility(state.loading)
             ingredientsAdapter.setList(state.ingredientsList)
             recipeAdapter.setList(state.recipeList)
-            setViewVisibility(recipeAdapter.itemCount)
         }
     }
 
-    private fun setViewVisibility(itemCount: Int) =
-        with(binding) {
-            homeConstraintLayout.setRecyclerViewVisibility(itemCount)
-            homeEmptyState.setEmptyStateVisibility(itemCount)
+    private fun setLoaderVisibility(loading: Boolean) {
+        if (!loading) {
+            loaderDialogConfig.dismissLoaderDialog()
         }
+    }
+
+    private fun openLoaderDialog() {
+        loaderDialogConfig =
+            LoaderDialogConfig()
+                .also { config ->
+                    config.apply {
+                        showLoaderDialog(childFragmentManager)
+                        setCancelable(false)
+                    }
+                }
+    }
 }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+ - item_recipe_search.xml
+ - Created by Ulises Gonzalez on 25/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/itemRecipeSearchLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/widgets_padding_size"
+    android:paddingVertical="@dimen/widgets_margin_size.small"
+    tools:ignore="UseCompoundDrawables">
+
+    <ImageView
+        android:id="@+id/recipeImageView"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/widgets_image"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/il_food" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/widgets_margin_size"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nameTextView"
+            style="@style/widgets_normalText.bold"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/smallDescriptionTextView"
+            style="@style/widgets_normalText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Small description" />
+
+    </LinearLayout>
+
+</LinearLayout>

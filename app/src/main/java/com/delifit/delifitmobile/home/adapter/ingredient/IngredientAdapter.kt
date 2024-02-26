@@ -10,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Ingredient
+import com.delifit.delifitmobile.home.adapter.ingredient.IngredientViewHolder.Companion.selectedItem
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.widgets.databinding.ItemIngredientBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -17,7 +19,7 @@ import kotlinx.coroutines.withContext
 @SuppressLint("NotifyDataSetChanged")
 class IngredientAdapter(
     private var ingredientList: List<Ingredient> = emptyList(),
-    private val onItemSelected: (Ingredient?) -> Unit,
+    private val onItemSelected: (String) -> Unit,
 ) : RecyclerView.Adapter<IngredientViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -48,5 +50,9 @@ class IngredientAdapter(
 
     fun notifyDataChanged() {
         notifyDataSetChanged()
+    }
+
+    fun resetSelectedItem() {
+        selectedItem = EMPTY_STRING
     }
 }

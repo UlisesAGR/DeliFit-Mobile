@@ -1,6 +1,6 @@
 /*
- * IngredientsUseCase.kt
- * Created by Ulises Gonzalez on 24/02/24
+ * ReadRecipesUseCase.kt
+ * Created by Ulises Gonzalez on 25/02/24
  * Copyright (c) 2023. All rights reserved.
  */
 package com.delifit.delifitmobile.core.domain.usecase
@@ -8,8 +8,8 @@ package com.delifit.delifitmobile.core.domain.usecase
 import com.delifit.delifitmobile.core.domain.repository.ContainerRepository
 import javax.inject.Inject
 
-class IngredientsUseCase @Inject constructor(
+class ReadRecipesUseCase @Inject constructor(
     private val containerRepository: ContainerRepository,
 ) {
-    operator fun invoke() = containerRepository.getIngredientsList()
+    suspend operator fun invoke() = containerRepository.readRecipes()
 }

@@ -17,6 +17,9 @@ android {
     defaultConfig {
         minSdk = 26
 
+        buildConfigField("String", "DATABASE", "\"dataBase\"")
+        buildConfigField("String", "BASE_URL", "\"http://www.example.com\"")
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }
@@ -29,7 +32,6 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
-            resValue("string", "app_name", "DeliFit")
         }
     }
     compileOptions {
@@ -62,11 +64,12 @@ dependencies {
 
     implementation(libs.org.coroutines)
 
+    implementation(libs.bundles.androidx.room.libs)
     implementation(libs.bundles.androidx.lifecycle.libs)
     implementation(libs.bundles.com.retrofit.libs)
 
     ksp(libs.com.hilt.compiler)
-    ksp(libs.com.glide.compiler)
+    ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.test.junit.junit)
     testImplementation(libs.test.coroutines)

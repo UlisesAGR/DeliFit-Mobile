@@ -7,9 +7,15 @@ package com.delifit.delifitmobile.core.domain.repository
 
 import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
+import com.delifit.delifitmobile.utils.ResponseStatus
+import kotlinx.coroutines.flow.Flow
 
 interface ContainerRepository {
-    fun getIngredientsList(): List<Ingredient>
+    suspend fun clearAndSaveRecipes(recipeList: List<Recipe>): Flow<ResponseStatus<Unit>>
 
-    fun getRecipeList(): List<Recipe>
+    suspend fun getIngredients(): Flow<ResponseStatus<List<Ingredient>>>
+
+    suspend fun readRecipes(): Flow<ResponseStatus<List<Recipe>>>
+
+    suspend fun readRecipeById(recipeId: Int): Flow<ResponseStatus<Recipe>>
 }
