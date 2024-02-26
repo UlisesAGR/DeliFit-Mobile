@@ -6,7 +6,7 @@
 package com.delifit.delifitmobile.core.data.provider
 
 import android.content.Context
-import com.delifit.delifitmobile.core.R
+import com.delifit.delifitmobile.widgets.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -15,18 +15,9 @@ class TextsProvider @Inject constructor(
 ) {
     private val resource = appContext.resources
 
-    fun getSuccessfullySavedRecipesLabel(): String =
-        resource.getString(R.string.app_successfully_saved_recipes)
-
     fun getErrorSavingRecipesLabel(): String =
-        resource.getString(R.string.app_error_saving_recipes)
+        resource.getString(R.string.widgets_error_saving_recipes)
 
     fun getErrorGettingIngredientsLabel(): String =
-        resource.getString(R.string.app_error_getting_ingredients)
-
-    fun getErrorGettingRecipeLabel(): String =
-        resource.getString(R.string.app_error_getting_recipe)
-
-    fun getErrorGettingRecipeByIdLabel(): String =
-        resource.getString(R.string.app_error_getting_recipe_by_id)
+        resource.getString(R.string.widgets_error_getting_ingredients)
 }

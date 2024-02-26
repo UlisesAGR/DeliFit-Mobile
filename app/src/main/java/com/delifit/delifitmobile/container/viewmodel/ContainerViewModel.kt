@@ -7,40 +7,36 @@ package com.delifit.delifitmobile.container.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.delifit.delifitmobile.core.data.provider.RecipeProvider
 import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
-import com.delifit.delifitmobile.core.domain.usecase.ClearAndSaveRecipesUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
-import com.delifit.delifitmobile.core.domain.usecase.ReadRecipeByIdUseCase
-import com.delifit.delifitmobile.core.domain.usecase.ReadRecipesUseCase
+import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
 import com.delifit.delifitmobile.utils.ResponseStatus
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.jetbrains.annotations.VisibleForTesting
 import javax.inject.Inject
 
 @HiltViewModel
 class ContainerViewModel @Inject constructor(
-    recipeProvider: RecipeProvider,
-    private val clearAndSaveRecipesUseCase: ClearAndSaveRecipesUseCase,
     private val getIngredientsListUseCase: GetIngredientsListUseCase,
-    private val readRecipesUseCase: ReadRecipesUseCase,
-    private val readRecipeByIdUseCase: ReadRecipeByIdUseCase,
+    private val getRecipesUseCase: GetRecipesUseCase,
     private val textsProvider: TextsProvider,
 ) : ViewModel() {
     private var _containerState = MutableStateFlow(ContainerState())
     val containerState: StateFlow<ContainerState> = _containerState
+    private var recipeList: List<Recipe> = emptyList()
 
     init {
-        clearAndSaveRecipesUseCase(recipeProvider.getRecipes())
+        getRecipesUseCase()
     }
 
-    private fun clearAndSaveRecipesUseCase(recipeList: List<Recipe>) =
+    private fun getRecipesUseCase() =
         viewModelScope.launch {
-            clearAndSaveRecipesUseCase.invoke(recipeList)
+            getRecipesUseCase.invoke()
                 .collect { response ->
                     when (response) {
                         is ResponseStatus.Loading ->
@@ -51,10 +47,13 @@ class ContainerViewModel @Inject constructor(
                             }
 
                         is ResponseStatus.Success -> {
-                            _containerState.update { state ->
-                                state.copy(
-                                    message = textsProvider.getSuccessfullySavedRecipesLabel(),
-                                )
+                            response.data?.let { data ->
+                                recipeList = data
+                                _containerState.update { state ->
+                                    state.copy(
+                                        recipeList = data,
+                                    )
+                                }
                             }
                             getIngredientsListUseCase()
                         }
@@ -81,11 +80,11 @@ class ContainerViewModel @Inject constructor(
                             response.data?.let { data ->
                                 _containerState.update { state ->
                                     state.copy(
+                                        loading = false,
                                         ingredientsList = data,
                                     )
                                 }
                             }
-                            readRecipesUseCase()
                         }
 
                         is ResponseStatus.Error ->
@@ -100,65 +99,30 @@ class ContainerViewModel @Inject constructor(
             resetUiState()
         }
 
-    fun readRecipesUseCase() =
+    fun getRecipes() =
         viewModelScope.launch {
-            readRecipesUseCase.invoke()
-                .collect { response ->
-                    when (response) {
-                        is ResponseStatus.Loading ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    loading = true,
-                                )
-                            }
-
-                        is ResponseStatus.Success ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    loading = false,
-                                    recipeList = response.data ?: emptyList(),
-                                )
-                            }
-
-                        is ResponseStatus.Error ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    message = response.message
-                                        ?: textsProvider.getErrorGettingRecipeLabel(),
-                                )
-                            }
-                    }
-                }
-            resetUiState()
+            _containerState.update { state ->
+                state.copy(
+                    recipeList = recipeList,
+                )
+            }
         }
 
-    fun readRecipeByIdUseCase(recipeId: Int) =
+    fun getRecipesById(recipeId: Int) =
         viewModelScope.launch {
-            readRecipeByIdUseCase.invoke(recipeId)
-                .collect { response ->
-                    when (response) {
-                        is ResponseStatus.Loading -> {}
-                        is ResponseStatus.Success -> {
-                            response.data?.let { data ->
-                                _containerState.update { state ->
-                                    state.copy(
-                                        recipe = data,
-                                    )
-                                }
-                            }
-                        }
-
-                        is ResponseStatus.Error ->
-                            _containerState.update { state ->
-                                state.copy(
-                                    message = response.message
-                                        ?: textsProvider.getErrorGettingRecipeByIdLabel(),
-                                )
-                            }
-                    }
-                }
-            resetUiState()
+            _containerState.update { state ->
+                state.copy(
+                    recipe = searchRecipe(recipeId),
+                )
+            }
         }
+
+    @VisibleForTesting
+    private fun searchRecipe(recipeId: Int): Recipe? {
+        return recipeList.find { recipe ->
+            recipe.id == recipeId
+        }
+    }
 
     private fun resetUiState() {
         _containerState.update {

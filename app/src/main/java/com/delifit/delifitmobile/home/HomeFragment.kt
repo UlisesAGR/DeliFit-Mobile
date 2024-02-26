@@ -18,8 +18,6 @@ import com.delifit.delifitmobile.databinding.FragmentHomeBinding
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
 import com.delifit.delifitmobile.utils.collect
-import com.delifit.delifitmobile.utils.setOnSafeClickListener
-import com.delifit.delifitmobile.widgets.text.dialog.loader.LoaderDialogConfig
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -30,7 +28,6 @@ class HomeFragment : Fragment() {
     }
 
     private val containerViewModel: ContainerViewModel by viewModels()
-    private lateinit var loaderDialogConfig: LoaderDialogConfig
     private lateinit var ingredientsAdapter: IngredientAdapter
     private lateinit var recipeAdapter: RecipeAdapter
 
@@ -51,7 +48,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setInitUi() {
-        openLoaderDialog()
         setIngredientsAdapter()
         setIngredientsRecyclerView()
         setRecipeAdapter()
@@ -103,7 +99,7 @@ class HomeFragment : Fragment() {
 
     private fun setListeners() =
         with(binding) {
-            searchView.setOnSafeClickListener {
+            searchView.setOnClickListener {
                 ingredientsAdapter.resetSelectedItem()
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToSearchFragment(),
@@ -113,26 +109,8 @@ class HomeFragment : Fragment() {
 
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
-            setLoaderVisibility(state.loading)
             ingredientsAdapter.setList(state.ingredientsList)
             recipeAdapter.setList(state.recipeList)
         }
-    }
-
-    private fun setLoaderVisibility(loading: Boolean) {
-        if (!loading) {
-            loaderDialogConfig.dismissLoaderDialog()
-        }
-    }
-
-    private fun openLoaderDialog() {
-        loaderDialogConfig =
-            LoaderDialogConfig()
-                .also { config ->
-                    config.apply {
-                        showLoaderDialog(childFragmentManager)
-                        setCancelable(false)
-                    }
-                }
     }
 }

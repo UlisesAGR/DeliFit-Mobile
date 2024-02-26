@@ -10,7 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
@@ -20,6 +20,8 @@ import com.delifit.delifitmobile.databinding.FragmentDetailBinding
 import com.delifit.delifitmobile.detail.adapter.IngredientsListAdapter
 import com.delifit.delifitmobile.detail.adapter.StepsListAdapter
 import com.delifit.delifitmobile.utils.collect
+import com.delifit.delifitmobile.utils.load
+import com.delifit.delifitmobile.widgets.R
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +30,7 @@ class DetailFragment : Fragment() {
         FragmentDetailBinding.inflate(layoutInflater)
     }
 
-    private val containerViewModel: ContainerViewModel by viewModels()
+    private val containerViewModel: ContainerViewModel by activityViewModels()
     private val detailArgs: DetailFragmentArgs by navArgs()
 
     private lateinit var ingredientsListAdapter: IngredientsListAdapter
@@ -55,7 +57,7 @@ class DetailFragment : Fragment() {
         setIngredientsListRecyclerView()
         stepsListAdapter = StepsListAdapter()
         setStepsListRecyclerView()
-        containerViewModel.readRecipeByIdUseCase(detailArgs.id)
+        containerViewModel.getRecipesById(detailArgs.id)
         setListeners()
         setFlows()
     }
@@ -80,17 +82,29 @@ class DetailFragment : Fragment() {
         }
     }
 
-    private fun setDataToView(state: Recipe) {
-        state.apply {
-            setName(name)
-            setSmallDescription(smallDescription)
-            setTime(time)
-            setCalories(calories)
-            setLevel(level)
-            setDescription(description)
-            setIngredientsList(ingredients)
-            setStepsList(steps)
+    private fun setDataToView(state: Recipe?) {
+        state?.let {
+            state.apply {
+                setImage(image)
+                setName(name)
+                setSmallDescription(smallDescription)
+                setTime(time)
+                setCalories(calories)
+                setLevel(level)
+                setDescription(description)
+                setIngredientsList(ingredients)
+                setStepsList(steps)
+            }
+        } ?: run {
+            findNavController().popBackStack()
         }
+    }
+
+    private fun setImage(image: String) {
+        binding.recipeImageView.load(
+            image,
+            error = R.drawable.ic_error,
+        )
     }
 
     private fun setName(name: String) {

@@ -17,8 +17,8 @@ android {
     defaultConfig {
         minSdk = 26
 
-        buildConfigField("String", "DATABASE", "\"dataBase\"")
-        buildConfigField("String", "BASE_URL", "\"http://www.example.com\"")
+        buildConfigField("String", "BASE_URL", "\"http://demo4853406.mockable.io/\"")
+        buildConfigField("String", "ENDPOINT_RECIPES", "\"recipes\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -64,12 +64,10 @@ dependencies {
 
     implementation(libs.org.coroutines)
 
-    implementation(libs.bundles.androidx.room.libs)
     implementation(libs.bundles.androidx.lifecycle.libs)
     implementation(libs.bundles.com.retrofit.libs)
 
     ksp(libs.com.hilt.compiler)
-    ksp(libs.androidx.room.compiler)
 
     testImplementation(libs.test.junit.junit)
     testImplementation(libs.test.coroutines)

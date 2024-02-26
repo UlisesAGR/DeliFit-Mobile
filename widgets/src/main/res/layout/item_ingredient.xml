@@ -18,8 +18,9 @@
 
         <ImageView
             android:id="@+id/foodImageView"
-            android:layout_width="65dp"
-            android:layout_height="65dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/widgets_padding_size"
             android:contentDescription="@string/widgets_image"
             android:scaleType="centerCrop"
@@ -34,7 +35,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="1"
-        android:paddingHorizontal="@dimen/widgets_padding_size"
         android:paddingTop="@dimen/widgets_padding_size.small"
         tools:text="Ingredient" />
 

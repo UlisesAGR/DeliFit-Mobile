@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -30,7 +31,7 @@ class SearchFragment : Fragment() {
         FragmentSearchBinding.inflate(layoutInflater)
     }
 
-    private val containerViewModel: ContainerViewModel by viewModels()
+    private val containerViewModel: ContainerViewModel by activityViewModels()
     private lateinit var recipeSearchAdapter: RecipeSearchAdapter
 
     override fun onCreateView(
@@ -50,7 +51,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun setInitUi() {
-        containerViewModel.readRecipesUseCase()
+        containerViewModel.getRecipes()
         setRecipeSearchAdapter()
         setRecipeSearchRecyclerView()
         setFocusFilter()

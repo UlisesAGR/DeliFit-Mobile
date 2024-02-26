@@ -28,3 +28,23 @@ fun Context.materialDialog(
         dialog.dismiss()
     }
     .show()
+
+fun Context.materialDialog(
+    title: String,
+    message: String,
+    textNegativeButton: String,
+    textPositiveButton: String,
+) {
+    if (message.isNotEmpty()) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setNegativeButton(textNegativeButton) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .setPositiveButton(textPositiveButton) { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+}

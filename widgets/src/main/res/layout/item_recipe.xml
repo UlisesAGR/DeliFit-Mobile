@@ -7,7 +7,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/itemRecipeLayout"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/widgets_padding_size.small">
 
@@ -46,8 +46,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/widgets_padding_size.small"
             android:paddingHorizontal="@dimen/widgets_padding_size.small"
+            android:paddingTop="@dimen/widgets_padding_size.small"
             android:paddingBottom="@dimen/widgets_padding_size.small">
 
             <ImageView

@@ -8,6 +8,7 @@ package com.delifit.delifitmobile.home.adapter.recipe
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.LevelCooking
+import com.delifit.delifitmobile.utils.load
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.utils.toLevelCooking
 import com.delifit.delifitmobile.widgets.R
@@ -23,7 +24,10 @@ class RecipeViewHolder(
         onItemSelected: (Recipe) -> Unit,
     ) = with(binding) {
         recipe.apply {
-            foodImageView.setImageResource(image)
+            foodImageView.load(
+                image,
+                error = R.drawable.ic_error,
+            )
             nameTextView.text = name
             descriptionTextView.text = smallDescription
             timeTextView.text = time

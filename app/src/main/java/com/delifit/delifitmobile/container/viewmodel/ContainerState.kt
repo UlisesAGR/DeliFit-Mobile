@@ -9,11 +9,11 @@ import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
 
 data class ContainerState(
-    val loading: Boolean = false,
+    val loading: Boolean = true,
     val message: String = "",
     val recipeList: List<Recipe> = emptyList(),
     val ingredientsList: List<Ingredient> = emptyList(),
-    val recipe: Recipe =
+    val recipe: Recipe? =
         Recipe(
             id = 0,
             name = "",
@@ -24,7 +24,7 @@ data class ContainerState(
             level = "",
             ingredients = emptyList(),
             steps = emptyList(),
-            image = 0,
+            image = "",
             latitude = "",
             longitude = "",
         ),

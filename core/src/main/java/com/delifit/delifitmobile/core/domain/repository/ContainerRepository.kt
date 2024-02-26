@@ -11,11 +11,7 @@ import com.delifit.delifitmobile.utils.ResponseStatus
 import kotlinx.coroutines.flow.Flow
 
 interface ContainerRepository {
-    suspend fun clearAndSaveRecipes(recipeList: List<Recipe>): Flow<ResponseStatus<Unit>>
-
     suspend fun getIngredients(): Flow<ResponseStatus<List<Ingredient>>>
 
-    suspend fun readRecipes(): Flow<ResponseStatus<List<Recipe>>>
-
-    suspend fun readRecipeById(recipeId: Int): Flow<ResponseStatus<Recipe>>
+    suspend fun getRecipes(): Flow<ResponseStatus<List<Recipe>>>
 }

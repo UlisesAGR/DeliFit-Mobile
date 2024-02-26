@@ -7,7 +7,9 @@ package com.delifit.delifitmobile.search.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
+import com.delifit.delifitmobile.utils.load
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
+import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeSearchBinding
 
 class RecipeSearchViewHolder(
@@ -18,7 +20,10 @@ class RecipeSearchViewHolder(
         onItemSelected: (Recipe) -> Unit,
     ) = with(binding) {
         recipe.apply {
-            recipeImageView.setImageResource(image)
+            recipeImageView.load(
+                image,
+                error = R.drawable.ic_error,
+            )
             nameTextView.text = name
             smallDescriptionTextView.text = smallDescription
         }

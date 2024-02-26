@@ -49,10 +49,11 @@ class RecipeAdapter(
         }
 
     suspend fun filterByIngredient(ingredient: String) {
-        val newList =
-            recipeList.filter { recipe ->
-                recipe.name.lowercase().contains(ingredient.lowercase())
+        val newList = recipeList.filter { recipe ->
+            recipe.ingredients.any { item ->
+                item.lowercase().contains(ingredient.lowercase())
             }
+        }
         updateList(newList)
     }
 

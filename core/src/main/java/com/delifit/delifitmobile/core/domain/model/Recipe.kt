@@ -5,7 +5,7 @@
  */
 package com.delifit.delifitmobile.core.domain.model
 
-import com.delifit.delifitmobile.core.data.db.entities.RecipeEntity
+import com.delifit.delifitmobile.core.data.network.response.RecipesResponse
 
 data class Recipe(
     var id: Int,
@@ -17,26 +17,12 @@ data class Recipe(
     var level: String,
     var ingredients: List<String>,
     var steps: List<Steps>,
-    var image: Int,
+    var image: String,
     var latitude: String,
     var longitude: String,
 )
 
-fun Recipe.toEntity(): RecipeEntity =
-    RecipeEntity(
-        id,
-        name,
-        description,
-        smallDescription,
-        time,
-        calories,
-        level,
-        image,
-        latitude,
-        longitude,
-    )
-
-fun RecipeEntity.toDomain(): Recipe =
+fun RecipesResponse.toDomain(): Recipe =
     Recipe(
         id,
         name,
@@ -45,8 +31,8 @@ fun RecipeEntity.toDomain(): Recipe =
         time,
         calories,
         level,
-        emptyList(),
-        emptyList(),
+        ingredients,
+        steps.map { it.toDomain() },
         image,
         latitude,
         longitude,
