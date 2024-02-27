@@ -11,4 +11,8 @@
     <string name="app_back">Regresar</string>
     <string name="origin">Origen</string>
     <string name="app_description">Descripción</string>
+    <string name="app_go_to_map">Ir al mapa</string>
+    <string name="app_know_the_origin_of_the_dish">Conoce el origen del platillo mirando su ubicación en el mapa</string>
+    <string name="app_click_on_the_pointer_to_know_name">Click en el puntero para saber nombre</string>
+    <string name="app_map">Mapa</string>
 </resources>

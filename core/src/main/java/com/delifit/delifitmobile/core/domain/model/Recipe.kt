@@ -18,8 +18,9 @@ data class Recipe(
     var ingredients: List<String>,
     var steps: List<Steps>,
     var image: String?,
-    var latitude: String?,
-    var longitude: String?,
+    var origin: String?,
+    var latitude: Double?,
+    var longitude: Double?,
 )
 
 fun RecipesResponse.toDomain(): Recipe =
@@ -34,6 +35,7 @@ fun RecipesResponse.toDomain(): Recipe =
         ingredients,
         steps.map { it.toDomain() },
         image,
+        origin,
         latitude,
         longitude,
     )

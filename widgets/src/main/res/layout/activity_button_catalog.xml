@@ -12,8 +12,14 @@
     tools:context=".text.button.ButtonCatalogActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonPrimary"
         style="@style/widgets_primary_button_style"
+        tools:text="Text" />
+
+    <Button
+        android:id="@+id/buttonSecondary"
+        style="@style/widgets_secondary_button_style"
+        android:layout_marginTop="@dimen/widgets_margin_size"
         tools:text="Text" />
 
 </LinearLayout>

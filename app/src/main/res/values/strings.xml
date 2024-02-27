@@ -18,4 +18,8 @@
     <string name="app_back">Back</string>
     <string name="origin">Origin</string>
     <string name="app_description">Description</string>
+    <string name="app_go_to_map">Go to Map</string>
+    <string name="app_know_the_origin_of_the_dish">Know the origin of the dish by looking at its location on the map</string>
+    <string name="app_click_on_the_pointer_to_know_name">Click on the pointer to know name</string>
+    <string name="app_map">Map</string>
 </resources>

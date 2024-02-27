@@ -52,6 +52,7 @@ dependencies {
     implementation(libs.com.material)
     implementation(libs.com.okhttp3)
     implementation(libs.com.hilt)
+    implementation(libs.com.maps)
 
     implementation(libs.org.coroutines)
 

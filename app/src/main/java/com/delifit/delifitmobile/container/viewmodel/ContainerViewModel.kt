@@ -11,6 +11,7 @@ import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.parseError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,6 +19,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import org.jetbrains.annotations.VisibleForTesting
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,7 +31,8 @@ class ContainerViewModel @Inject constructor(
     private var _containerState = MutableStateFlow(ContainerState())
     val containerState: StateFlow<ContainerState> = _containerState
 
-    private var recipeListCurrent: List<Recipe> = emptyList()
+    @VisibleForTesting
+    var recipeListCurrent: List<Recipe> = emptyList()
 
     fun getRecipesUseCase() =
         viewModelScope.launch {
@@ -65,7 +68,8 @@ class ContainerViewModel @Inject constructor(
             resetUiState()
         }
 
-    private fun getIngredientsListUseCase() =
+    @VisibleForTesting
+    fun getIngredientsListUseCase() =
         viewModelScope.launch {
             getIngredientsListUseCase.invoke()
                 .catch { exception ->
@@ -121,12 +125,14 @@ class ContainerViewModel @Inject constructor(
             }
         }
 
-    private fun searchRecipe(recipeId: Int): Recipe? =
+    @VisibleForTesting
+    fun searchRecipe(recipeId: Int): Recipe? =
         recipeListCurrent.find { recipe ->
             recipe.id == recipeId
         }
 
-    private fun startLoading() {
+    @VisibleForTesting
+    fun startLoading() {
         _containerState.update { state ->
             state.copy(
                 loading = true,
@@ -134,10 +140,11 @@ class ContainerViewModel @Inject constructor(
         }
     }
 
-    private fun resetUiState() {
+    @VisibleForTesting
+    fun resetUiState() {
         _containerState.update {
             it.copy(
-                message = "",
+                message = EMPTY_STRING,
             )
         }
     }

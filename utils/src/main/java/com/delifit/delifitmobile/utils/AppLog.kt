@@ -5,49 +5,7 @@
  */
 package com.delifit.delifitmobile.utils
 
-import android.util.Log
-
 class AppLog {
-    fun debug(
-        tag: Any,
-        message: String,
-    ) {
-        if (BuildConfig.DEBUG) {
-            val className = tag.javaClass.simpleName
-            Log.d(className, message)
-        }
-    }
-
-    fun info(
-        tag: Any,
-        message: String,
-    ) {
-        if (BuildConfig.DEBUG) {
-            val className = tag.javaClass.simpleName
-            Log.i(className, message)
-        }
-    }
-
-    fun warning(
-        tag: Any,
-        message: String,
-    ) {
-        if (BuildConfig.DEBUG) {
-            val className = tag.javaClass.simpleName
-            Log.w(className, message)
-        }
-    }
-
-    fun error(
-        tag: Any,
-        message: String,
-    ) {
-        if (BuildConfig.DEBUG) {
-            val className = tag.javaClass.simpleName
-            Log.e(className, message)
-        }
-    }
-
     fun exception(
         tag: Any,
         exception: Throwable,

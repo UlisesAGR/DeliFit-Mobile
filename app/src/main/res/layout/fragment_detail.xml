@@ -19,7 +19,7 @@
             android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/widgets_color"
+            app:contentScrim="@color/widgets_white"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <ImageView
@@ -176,10 +176,27 @@
                 android:layout_marginTop="@dimen/widgets_margin_size"
                 android:text="@string/origin" />
 
+            <TextView
+                style="@style/widgets_normalText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_know_the_origin_of_the_dish" />
+
+            <Button
+                android:id="@+id/mapButton"
+                style="@style/widgets_secondary_button_style"
+                android:layout_marginTop="@dimen/widgets_margin_size.big"
+                android:text="@string/app_go_to_map" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/widgets_margin_size.big"
+                android:background="@android:color/darker_gray" />
+
             <Button
                 android:id="@+id/backButton"
                 style="@style/widgets_primary_button_style"
-                android:layout_marginTop="@dimen/widgets_margin_size.big"
                 android:text="@string/app_back" />
 
         </LinearLayout>

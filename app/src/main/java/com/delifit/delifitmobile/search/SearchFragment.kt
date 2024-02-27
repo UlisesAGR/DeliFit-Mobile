@@ -15,6 +15,7 @@ import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentSearchBinding
 import com.delifit.delifitmobile.search.adapter.RecipeSearchAdapter
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.hideSoftKeyboard
 import com.delifit.delifitmobile.utils.onTetWatcher
@@ -106,6 +107,6 @@ class SearchFragment : Fragment() {
     }
 
     private fun clearFilter() {
-        binding.nameEditText.setText("")
+        binding.nameEditText.setText(EMPTY_STRING)
     }
 }

@@ -36,6 +36,7 @@ class DetailFragment : Fragment() {
 
     private lateinit var ingredientsListAdapter: IngredientsListAdapter
     private lateinit var stepsListAdapter: StepsListAdapter
+    private var recipeId = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -86,6 +87,7 @@ class DetailFragment : Fragment() {
     private fun setDataToView(state: Recipe?) {
         state?.let {
             state.apply {
+                recipeId = id
                 setImage(image)
                 setName(name)
                 setSmallDescription(smallDescription)
@@ -105,10 +107,7 @@ class DetailFragment : Fragment() {
         with(binding.recipeImageView)
         {
             if (!image.isNullOrEmpty()) {
-                load(
-                    image,
-                    error = R.drawable.ic_error,
-                )
+                load(image, error = R.drawable.ic_error)
                 show()
             }
         }
@@ -179,6 +178,11 @@ class DetailFragment : Fragment() {
         with(binding) {
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
+            }
+            mapButton.setOnClickListener {
+                findNavController().navigate(
+                    DetailFragmentDirections.actionDetailFragmentToMapFragment(recipeId),
+                )
             }
             backButton.setOnClickListener {
                 findNavController().popBackStack()

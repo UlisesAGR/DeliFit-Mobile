@@ -16,6 +16,7 @@ data class RecipesResponse(
     var ingredients: List<String>,
     var steps: List<StepsResponse>,
     var image: String?,
-    var latitude: String?,
-    var longitude: String?,
+    var origin: String?,
+    var latitude: Double?,
+    var longitude: Double?,
 )

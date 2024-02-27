@@ -5,6 +5,15 @@
  */
 package com.delifit.delifitmobile.utils
 
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
+import com.delifit.delifitmobile.utils.Constants.GENERIC_CODE
+import com.delifit.delifitmobile.utils.Constants.GENERIC_ERROR
+import com.delifit.delifitmobile.utils.Constants.HTTP_CODE
+import com.delifit.delifitmobile.utils.Constants.HTTP_ERROR
+import com.delifit.delifitmobile.utils.Constants.RED_CODE
+import com.delifit.delifitmobile.utils.Constants.RED_ERROR
+import com.delifit.delifitmobile.utils.Constants.TIMEOUT_CODE
+import com.delifit.delifitmobile.utils.Constants.TIMEOUT_ERROR
 import retrofit2.HttpException
 import retrofit2.Response
 import java.net.ConnectException
@@ -41,8 +50,8 @@ private fun <R, T> toResource(
 sealed class Resource<out T>(
     val status: Int,
     val data: T? = null,
-    val message: String? = "",
-    val messageDefault: String? = "",
+    val message: String? = EMPTY_STRING,
+    val messageDefault: String? = EMPTY_STRING,
 ) {
     class Success<T>(
         data: T,
@@ -83,20 +92,9 @@ fun Throwable.parseError(): UseCaseException.GenericException =
 sealed class UseCaseException : kotlin.Exception() {
     class GenericException(
         val code: Int = 0,
-        val errorMessage: String = "",
+        val errorMessage: String = EMPTY_STRING,
     ) : Exception(errorMessage) {
         var serverCode: Int = 0
-        var serverMessage: String = ""
+        var serverMessage: String = EMPTY_STRING
     }
 }
-
-const val RED_CODE = 101
-const val RED_ERROR = "Revise su conexion a internet"
-const val TIMEOUT_CODE = 102
-const val TIMEOUT_ERROR = "Tiempo de espera agotado"
-const val BAD_RESPONSE_CODE = 444
-const val BAD_RESPONSE_ERROR = "Mala respuesta del servidor"
-const val HTTP_CODE = 503
-const val HTTP_ERROR = "Hay problemas con el serividor, intentelo mas tarde"
-const val GENERIC_CODE = 500
-const val GENERIC_ERROR = "Hay problemas con el serividor, intentelo mas tarde"

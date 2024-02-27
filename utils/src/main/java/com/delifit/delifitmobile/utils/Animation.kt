@@ -1,5 +1,5 @@
 /*
- * Image.kt
+ * Animation.kt
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */

@@ -34,10 +34,7 @@ class RecipeSearchViewHolder(
         with(binding.recipeImageView)
         {
             if (!image.isNullOrEmpty()) {
-                load(
-                    image,
-                    error = R.drawable.ic_error,
-                )
+                load(image, error = R.drawable.ic_error)
                 show()
             }
         }

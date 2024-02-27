@@ -19,6 +19,7 @@ lib-coroutines = '1.7.1'
 lib-test = '1.5.0'
 lib-hilt = '2.48'
 lib-glide = '4.16.0'
+lib-maps = '18.2.0'
 #test
 test-junit = '4.13.2'
 test-mockito = '4.4.0'
@@ -58,6 +59,7 @@ com-retrofit2-retrofit = { module = 'com.squareup.retrofit2:retrofit', version.r
 com-retrofit2-converter-gson = { module = 'com.squareup.retrofit2:converter-gson', version.ref = 'lib-retrofit' }
 com-hilt = { module = 'com.google.dagger:hilt-android', version.ref = 'lib-hilt' }
 com-hilt-compiler = { module = 'com.google.dagger:hilt-compiler', version.ref = 'lib-hilt' }
+com-maps = { module = 'com.google.android.gms:play-services-maps', version.ref = 'lib-maps' }
 #org
 org-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-android', version.ref = 'lib-coroutines' }
 #test

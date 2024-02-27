@@ -40,10 +40,7 @@ class RecipeViewHolder(
         with(binding.foodImageView)
         {
             if (!image.isNullOrEmpty()) {
-                load(
-                    image,
-                    error = R.drawable.ic_error,
-                )
+                load(image, error = R.drawable.ic_error)
                 show()
             }
         }
