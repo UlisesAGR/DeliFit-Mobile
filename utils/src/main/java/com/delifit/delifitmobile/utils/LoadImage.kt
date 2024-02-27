@@ -16,7 +16,7 @@ fun ImageView.load(
     Glide.with(this)
         .load(url)
         .transition(DrawableTransitionOptions.withCrossFade())
-        .placeholder(android.R.drawable.progress_indeterminate_horizontal)
+        .placeholder(android.R.drawable.progress_horizontal)
         .error(error)
         .into(this)
 }
