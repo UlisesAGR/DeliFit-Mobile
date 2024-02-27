@@ -104,8 +104,7 @@ class DetailFragment : Fragment() {
     }
 
     private fun setImage(image: String?) =
-        with(binding.recipeImageView)
-        {
+        with(binding.recipeImageView) {
             if (!image.isNullOrEmpty()) {
                 load(image, error = R.drawable.ic_error)
                 show()
@@ -113,8 +112,7 @@ class DetailFragment : Fragment() {
         }
 
     private fun setName(name: String?) =
-        with(binding.nameTextView)
-        {
+        with(binding.nameTextView) {
             if (!name.isNullOrEmpty()) {
                 text = name
                 show()
@@ -122,8 +120,7 @@ class DetailFragment : Fragment() {
         }
 
     private fun setSmallDescription(smallDescription: String?) =
-        with(binding.smallDescriptionTextView)
-        {
+        with(binding.smallDescriptionTextView) {
             if (!smallDescription.isNullOrEmpty()) {
                 text = smallDescription
                 show()
@@ -131,35 +128,31 @@ class DetailFragment : Fragment() {
         }
 
     private fun setTime(time: String?) =
-        with(binding.timeCardElement)
-        {
+        with(binding.timeCardElement) {
             if (!time.isNullOrEmpty()) {
-                setElement(time)
+                setText(time)
                 show()
             }
         }
 
     private fun setCalories(calories: String?) =
-        with(binding.caloriesCardElement)
-        {
+        with(binding.caloriesCardElement) {
             if (!calories.isNullOrEmpty()) {
-                setElement(calories)
+                setText(calories)
                 show()
             }
         }
 
     private fun setLevel(level: String?) =
-        with(binding.levelCardElement)
-        {
+        with(binding.levelCardElement) {
             if (!level.isNullOrEmpty()) {
-                setElement(level)
+                setLevel(level)
                 show()
             }
         }
 
     private fun setDescription(description: String?) =
-        with(binding.descriptionTextView)
-        {
+        with(binding.descriptionTextView) {
             if (!description.isNullOrEmpty()) {
                 text = description
                 show()

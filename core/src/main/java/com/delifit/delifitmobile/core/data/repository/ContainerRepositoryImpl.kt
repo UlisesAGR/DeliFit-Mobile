@@ -23,7 +23,8 @@ class ContainerRepositoryImpl @Inject constructor(
             emit(ingredientProvider.getIngredients())
         }.flowOn(dispatcher)
 
-    override suspend fun getRecipes() = flow {
-        emit(containerDataSource.getRecipes())
-    }.flowOn(dispatcher)
+    override suspend fun getRecipes() =
+        flow {
+            emit(containerDataSource.getRecipes())
+        }.flowOn(dispatcher)
 }

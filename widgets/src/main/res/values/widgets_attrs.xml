@@ -4,15 +4,15 @@
  - Copyright (c) 2023. All rights reserved.
 -->
 <resources>
-    <declare-styleable name="EmptyState">
-        <attr name="imageEmptyStateList" format="reference" />
-        <attr name="titleEmptyStateList" format="string" />
-        <attr name="descriptionEmptyStateList" format="string" />
-    </declare-styleable>
     <declare-styleable name="Element">
         <attr name="imageCardElement" format="reference" />
     </declare-styleable>
     <declare-styleable name="Progress">
         <attr name="textProgress" format="string" />
+    </declare-styleable>
+    <declare-styleable name="EmptyState">
+        <attr name="imageEmptyStateList" format="reference" />
+        <attr name="titleEmptyStateList" format="string" />
+        <attr name="descriptionEmptyStateList" format="string" />
     </declare-styleable>
 </resources>

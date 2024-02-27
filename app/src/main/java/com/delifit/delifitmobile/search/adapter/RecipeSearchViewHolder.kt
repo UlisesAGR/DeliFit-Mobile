@@ -31,8 +31,7 @@ class RecipeSearchViewHolder(
     }
 
     private fun setImage(image: String?) =
-        with(binding.recipeImageView)
-        {
+        with(binding.recipeImageView) {
             if (!image.isNullOrEmpty()) {
                 load(image, error = R.drawable.ic_error)
                 show()
@@ -40,8 +39,7 @@ class RecipeSearchViewHolder(
         }
 
     private fun setName(name: String?) =
-        with(binding.nameTextView)
-        {
+        with(binding.nameTextView) {
             if (!name.isNullOrEmpty()) {
                 text = name
                 show()
@@ -49,8 +47,7 @@ class RecipeSearchViewHolder(
         }
 
     private fun setSmallDescription(description: String?) =
-        with(binding.smallDescriptionTextView)
-        {
+        with(binding.smallDescriptionTextView) {
             if (!description.isNullOrEmpty()) {
                 text = description
                 show()

@@ -22,7 +22,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class ContainerRepositoryImplTest {
-
     @Mock
     private lateinit var ingredientProvider: IngredientProvider
 
@@ -36,11 +35,12 @@ class ContainerRepositoryImplTest {
 
     @Before
     fun setUp() {
-        containerRepositoryImpl = ContainerRepositoryImpl(
-            ingredientProvider,
-            containerDataSource,
-            StandardTestDispatcher(),
-        )
+        containerRepositoryImpl =
+            ContainerRepositoryImpl(
+                ingredientProvider,
+                containerDataSource,
+                StandardTestDispatcher(),
+            )
     }
 
     @Test

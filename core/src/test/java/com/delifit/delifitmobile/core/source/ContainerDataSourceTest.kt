@@ -2,9 +2,9 @@ package com.delifit.delifitmobile.core.source
 
 import com.delifit.delifitmobile.core.data.network.RecipesServices
 import com.delifit.delifitmobile.core.data.source.ContainerDataSource
+import com.delifit.delifitmobile.core.utils.DispatcherRule
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipeList
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipesDataResponse
-import com.delifit.delifitmobile.core.utils.DispatcherRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
@@ -19,7 +19,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class ContainerDataSourceTest {
-
     @Mock
     private lateinit var recipesServices: RecipesServices
 
@@ -30,9 +29,10 @@ class ContainerDataSourceTest {
 
     @Before
     fun setUp() {
-        containerDataSource = ContainerDataSource(
-            recipesServices,
-        )
+        containerDataSource =
+            ContainerDataSource(
+                recipesServices,
+            )
     }
 
     @Test

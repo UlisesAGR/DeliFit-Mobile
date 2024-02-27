@@ -19,7 +19,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class GetRecipesUseCaseTest {
-
     @Mock
     private lateinit var containerRepository: ContainerRepository
 
@@ -30,9 +29,10 @@ class GetRecipesUseCaseTest {
 
     @Before
     fun setUp() {
-        getRecipesUseCase = GetRecipesUseCase(
-            containerRepository,
-        )
+        getRecipesUseCase =
+            GetRecipesUseCase(
+                containerRepository,
+            )
     }
 
     @Test

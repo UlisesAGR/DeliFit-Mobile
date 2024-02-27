@@ -15,4 +15,6 @@
     <string name="app_know_the_origin_of_the_dish">Conoce el origen del platillo mirando su ubicación en el mapa</string>
     <string name="app_click_on_the_pointer_to_know_name">Click en el puntero para saber nombre</string>
     <string name="app_map">Mapa</string>
+    <string name="app_empty_list">Lista vacia</string>
+    <string name="app_here_you_can_see_your_recipes">Aqui podras ver tus recetas</string>
 </resources>

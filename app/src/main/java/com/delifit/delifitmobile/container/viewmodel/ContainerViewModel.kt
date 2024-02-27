@@ -12,7 +12,7 @@ import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
-import com.delifit.delifitmobile.utils.parseError
+import com.delifit.delifitmobile.core.data.network.parseError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -41,6 +41,7 @@ class ContainerViewModel @Inject constructor(
                 .catch { exception ->
                     _containerState.update { state ->
                         state.copy(
+                            loading = false,
                             message = exception.parseError().errorMessage,
                         )
                     }
@@ -59,8 +60,8 @@ class ContainerViewModel @Inject constructor(
                     } else {
                         _containerState.update { state ->
                             state.copy(
-                                message = response.message
-                                    ?: textsProvider.getErrorGettingRecipesLabel(),
+                                message =
+                                    response.details ?: textsProvider.getErrorGettingRecipesLabel(),
                             )
                         }
                     }
@@ -75,6 +76,7 @@ class ContainerViewModel @Inject constructor(
                 .catch { exception ->
                     _containerState.update { state ->
                         state.copy(
+                            loading = false,
                             message = exception.parseError().errorMessage,
                         )
                     }
@@ -96,11 +98,12 @@ class ContainerViewModel @Inject constructor(
         viewModelScope.launch {
             _containerState.update { state ->
                 state.copy(
-                    recipeList = recipeListCurrent.filter { recipe ->
-                        recipe.ingredients.any { item ->
-                            item.lowercase().contains(ingredient.lowercase())
-                        }
-                    },
+                    recipeList =
+                        recipeListCurrent.filter { recipe ->
+                            recipe.ingredients.any { item ->
+                                item.lowercase().contains(ingredient.lowercase())
+                            }
+                        },
                 )
             }
         }
@@ -109,9 +112,10 @@ class ContainerViewModel @Inject constructor(
         viewModelScope.launch {
             _containerState.update { state ->
                 state.copy(
-                    recipeList = recipeListCurrent.filter { recipe ->
-                        recipe.name?.lowercase()?.contains(ingredient.lowercase()) ?: false
-                    },
+                    recipeList =
+                        recipeListCurrent.filter { recipe ->
+                            recipe.name?.lowercase()?.contains(ingredient.lowercase()) ?: false
+                        },
                 )
             }
         }

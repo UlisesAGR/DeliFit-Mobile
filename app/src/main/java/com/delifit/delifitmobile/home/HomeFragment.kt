@@ -16,7 +16,10 @@ import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
+import com.delifit.delifitmobile.utils.Constants
 import com.delifit.delifitmobile.utils.collect
+import com.delifit.delifitmobile.utils.emptyStateVisibilityItemCount
+import com.delifit.delifitmobile.utils.layoutVisibilityItemCount
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -93,10 +96,10 @@ class HomeFragment : Fragment() {
     private fun setListeners() =
         with(binding) {
             searchView.setOnClickListener {
-                ingredientsAdapter.resetSelectedItem()
                 findNavController().navigate(
                     HomeFragmentDirections.actionHomeFragmentToSearchFragment(),
                 )
+                resetFilterToClick()
             }
         }
 
@@ -104,6 +107,17 @@ class HomeFragment : Fragment() {
         collect(containerViewModel.containerState) { state ->
             ingredientsAdapter.setList(state.ingredientsList)
             recipeAdapter.setList(state.recipeList)
+            validateLayoutVisibility(state.recipeList.size)
         }
+    }
+
+    private fun validateLayoutVisibility(size: Int) {
+        binding.homeLayout.layoutVisibilityItemCount(size)
+        binding.homeEmptyState.emptyStateVisibilityItemCount(size)
+    }
+
+    private fun resetFilterToClick() {
+        ingredientsAdapter.resetSelectedItem()
+        containerViewModel.filterByIngredient(Constants.EMPTY_STRING)
     }
 }

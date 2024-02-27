@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+ - google_maps_api.xml app
+ - Created by Ulises Gonzalez on 26/02/24
+ - Copyright (c) 2023. All rights reserved.
+-->
 <resources>
     <string name="google_maps_key" templateMergeStrategy="preserver" translatable="false">AIzaSyAKJQ3LaJ2gajFfHToG6Y-LctkNGuoTxxU</string>
 </resources>

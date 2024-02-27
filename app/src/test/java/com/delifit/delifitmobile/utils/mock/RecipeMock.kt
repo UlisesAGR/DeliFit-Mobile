@@ -22,8 +22,8 @@ object RecipeMock {
                 steps = listOf(
                     Steps(
                         number = 1,
-                        description = "Shake"
-                    )
+                        description = "Shake",
+                    ),
                 ),
                 image = "www.image.com",
                 origin = "africa",
@@ -42,8 +42,8 @@ object RecipeMock {
                 steps = listOf(
                     Steps(
                         number = 1,
-                        description = "Shake"
-                    )
+                        description = "Shake",
+                    ),
                 ),
                 image = "www.image.com",
                 origin = "africa",
@@ -62,8 +62,8 @@ object RecipeMock {
                 steps = listOf(
                     Steps(
                         number = 1,
-                        description = "Shake"
-                    )
+                        description = "Shake",
+                    ),
                 ),
                 image = "www.image.com",
                 origin = "africa",
@@ -86,8 +86,8 @@ object RecipeMock {
                 steps = listOf(
                     Steps(
                         number = 1,
-                        description = "Shake"
-                    )
+                        description = "Shake",
+                    ),
                 ),
                 image = "www.image.com",
                 origin = "africa",
@@ -109,8 +109,8 @@ object RecipeMock {
             steps = listOf(
                 Steps(
                     number = 1,
-                    description = "Shake"
-                )
+                    description = "Shake",
+                ),
             ),
             image = "www.image.com",
             origin = "africa",
@@ -119,7 +119,5 @@ object RecipeMock {
         )
 
     val recipeListResponseSuccess =
-        flowOf(
-            Resource.Success(recipeList)
-        )
+        flowOf(Resource.Success(recipeList))
 }

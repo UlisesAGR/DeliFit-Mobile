@@ -31,3 +31,8 @@ fun View.progressVisibility(visible: Boolean) =
 fun View.layoutVisibility(visible: Boolean) =
     if (visible) visibility = View.GONE else visibility = View.VISIBLE
 
+fun View.layoutVisibilityItemCount(itemCount: Int) =
+    if (itemCount != 0) visibility = View.VISIBLE else visibility = View.GONE
+
+fun View.emptyStateVisibilityItemCount(itemCount: Int) =
+    if (itemCount != 0) visibility = View.GONE else visibility = View.VISIBLE

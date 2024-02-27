@@ -26,7 +26,5 @@ object IngredientMock {
         )
 
     val ingredientsListResponse =
-        flowOf(
-            ingredientsList
-        )
+        flowOf(ingredientsList)
 }

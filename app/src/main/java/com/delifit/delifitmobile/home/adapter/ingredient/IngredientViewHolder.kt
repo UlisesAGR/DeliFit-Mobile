@@ -40,19 +40,19 @@ class IngredientViewHolder(
 
     private fun setSelectedIngredient(ingredient: String) =
         with(binding) {
-            context.apply {
-                if (ingredient == selectedItem) {
-                    ingredientMaterialCardView.strokeColor =
-                        getColor(R.color.widgets_card_active)
-                    ingredientMaterialCardView.setCardBackgroundColor(getColor(R.color.widgets_card_active_transparent))
-                    foodImageView.setImageViewAnimation(R.anim.up)
-                    nameTextView.setTextColor(getColor(R.color.widgets_card_active))
-                } else {
-                    ingredientMaterialCardView.strokeColor =
-                        getColor(R.color.md_theme_light_outlineVariant)
-                    ingredientMaterialCardView.setCardBackgroundColor(getColor(R.color.widgets_white))
-                    nameTextView.setTextColor(getColor(R.color.widgets_black))
+            if (ingredient == selectedItem) {
+                foodImageView.setImageViewAnimation(R.anim.up)
+                ingredientMaterialCardView.apply {
+                    strokeColor = context.getColor(R.color.widgets_card_active)
+                    setCardBackgroundColor(context.getColor(R.color.widgets_card_active_transparent))
                 }
+                nameTextView.setTextColor(context.getColor(R.color.widgets_card_active))
+            } else {
+                ingredientMaterialCardView.apply {
+                    strokeColor = context.getColor(R.color.md_theme_light_outlineVariant)
+                    setCardBackgroundColor(context.getColor(R.color.widgets_white))
+                }
+                nameTextView.setTextColor(context.getColor(R.color.widgets_black))
             }
         }
 

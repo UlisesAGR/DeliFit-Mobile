@@ -13,6 +13,7 @@ import com.delifit.delifitmobile.R
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.collect
+import com.delifit.delifitmobile.utils.layoutVisibilityItemCount
 import com.delifit.delifitmobile.utils.materialDialog
 import com.delifit.delifitmobile.utils.onBackPressedHandler
 import com.delifit.delifitmobile.utils.progressVisibility

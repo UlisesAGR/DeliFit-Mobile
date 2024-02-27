@@ -20,6 +20,9 @@
     <string name="app_description">Description</string>
     <string name="app_go_to_map">Go to Map</string>
     <string name="app_know_the_origin_of_the_dish">Know the origin of the dish by looking at its location on the map</string>
+    <!--Strings Map Fragment-->
     <string name="app_click_on_the_pointer_to_know_name">Click on the pointer to know name</string>
     <string name="app_map">Map</string>
+    <string name="app_empty_list">Empty list</string>
+    <string name="app_here_you_can_see_your_recipes">Here you can see your recipes</string>
 </resources>

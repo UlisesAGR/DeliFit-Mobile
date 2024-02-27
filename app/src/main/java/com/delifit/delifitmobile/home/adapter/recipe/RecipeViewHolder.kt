@@ -37,8 +37,7 @@ class RecipeViewHolder(
     }
 
     private fun setImage(image: String?) =
-        with(binding.foodImageView)
-        {
+        with(binding.foodImageView) {
             if (!image.isNullOrEmpty()) {
                 load(image, error = R.drawable.ic_error)
                 show()
@@ -46,8 +45,7 @@ class RecipeViewHolder(
         }
 
     private fun setName(name: String?) =
-        with(binding.nameTextView)
-        {
+        with(binding.nameTextView) {
             if (!name.isNullOrEmpty()) {
                 text = name
                 show()
@@ -55,8 +53,7 @@ class RecipeViewHolder(
         }
 
     private fun setSmallDescription(description: String?) =
-        with(binding.smallDescriptionTextView)
-        {
+        with(binding.smallDescriptionTextView) {
             if (!description.isNullOrEmpty()) {
                 text = description
                 show()
@@ -64,8 +61,7 @@ class RecipeViewHolder(
         }
 
     private fun setTime(time: String?) =
-        with(binding.timeTextView)
-        {
+        with(binding.timeTextView) {
             if (!time.isNullOrEmpty()) {
                 text = time
                 show()
@@ -74,22 +70,20 @@ class RecipeViewHolder(
 
     private fun setStatus(level: LevelCooking) =
         with(binding) {
-            context.apply {
-                when (level) {
-                    LevelCooking.EASY -> {
-                        levelImageView.setColorFilter(getColor(R.color.widgets_easy))
-                        levelTextView.text = getString(R.string.widgets_easy)
-                    }
+            when (level) {
+                LevelCooking.EASY -> {
+                    levelImageView.setColorFilter(context.getColor(R.color.widgets_easy))
+                    levelTextView.text = context.getString(R.string.widgets_easy)
+                }
 
-                    LevelCooking.NORMAL -> {
-                        levelImageView.setColorFilter(getColor(R.color.widgets_normal))
-                        levelTextView.text = getString(R.string.widgets_normal)
-                    }
+                LevelCooking.NORMAL -> {
+                    levelImageView.setColorFilter(context.getColor(R.color.widgets_normal))
+                    levelTextView.text = context.getString(R.string.widgets_normal)
+                }
 
-                    LevelCooking.HARD -> {
-                        levelImageView.setColorFilter(getColor(R.color.widgets_hard))
-                        levelTextView.text = getString(R.string.widgets_hard)
-                    }
+                LevelCooking.HARD -> {
+                    levelImageView.setColorFilter(context.getColor(R.color.widgets_hard))
+                    levelTextView.text = context.getString(R.string.widgets_hard)
                 }
             }
         }

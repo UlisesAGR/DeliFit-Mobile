@@ -19,13 +19,15 @@ fun GoogleMap.setMap(
     latitude: Double?,
     longitude: Double?,
 ) {
-    val coordinates = LatLng(
-        latitude ?: EMPTY_DOUBLE,
-        longitude ?: EMPTY_DOUBLE,
-    )
-    val mark = MarkerOptions()
-        .position(coordinates)
-        .title(origin ?: EMPTY_STRING)
+    val coordinates =
+        LatLng(
+            latitude ?: EMPTY_DOUBLE,
+            longitude ?: EMPTY_DOUBLE,
+        )
+    val mark =
+        MarkerOptions()
+            .position(coordinates)
+            .title(origin ?: EMPTY_STRING)
     this.apply {
         addMarker(mark)
         animateCamera(

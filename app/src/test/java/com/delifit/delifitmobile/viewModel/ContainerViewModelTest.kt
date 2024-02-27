@@ -27,7 +27,6 @@ import org.mockito.junit.MockitoJUnitRunner
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class ContainerViewModelTest {
-
     @Mock
     private lateinit var getIngredientsListUseCase: GetIngredientsListUseCase
 
@@ -44,11 +43,12 @@ class ContainerViewModelTest {
 
     @Before
     fun setUp() {
-        containerViewModel = ContainerViewModel(
-            getIngredientsListUseCase,
-            getRecipesUseCase,
-            textsProvider,
-        )
+        containerViewModel =
+            ContainerViewModel(
+                getIngredientsListUseCase,
+                getRecipesUseCase,
+                textsProvider,
+            )
     }
 
     @Test

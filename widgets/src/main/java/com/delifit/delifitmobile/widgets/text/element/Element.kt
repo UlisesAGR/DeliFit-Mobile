@@ -49,25 +49,20 @@ class Element @JvmOverloads constructor(
         }
     }
 
-    fun setElement(text: String) {
-        setText(text)
-        setStatus(text.toLevelCooking())
+    fun setLevel(level: String) = with(binding) {
+        when (level.toLevelCooking()) {
+            LevelCooking.EASY -> textTextView.text =
+                context.getString(R.string.widgets_easy)
+
+            LevelCooking.NORMAL -> textTextView.text =
+                context.getString(R.string.widgets_normal)
+
+            LevelCooking.HARD -> textTextView.text =
+                context.getString(R.string.widgets_hard)
+        }
     }
 
-    private fun setText(text: String) {
+    fun setText(text: String) {
         binding.textTextView.text = text
     }
-
-    private fun setStatus(level: LevelCooking) =
-        with(binding) {
-            context.apply {
-                when (level) {
-                    LevelCooking.EASY -> textTextView.text = getString(R.string.widgets_easy)
-
-                    LevelCooking.NORMAL -> textTextView.text = getString(R.string.widgets_normal)
-
-                    LevelCooking.HARD -> textTextView.text = getString(R.string.widgets_hard)
-                }
-            }
-        }
 }

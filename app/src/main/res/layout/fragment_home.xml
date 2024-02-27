@@ -3,53 +3,75 @@
  - Created by Ulises Gonzalez on 23/02/24
  - Copyright (c) 2023. All rights reserved.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/homeLayout"
+    android:id="@+id/homeLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".home.HomeFragment">
 
-    <com.google.android.material.search.SearchBar
-        android:id="@+id/searchView"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/widgets_color"
-        android:hint="@string/app_search" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/ingredientsRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/widgets_padding_size.small"
-            android:paddingBottom="@dimen/widgets_padding_size.small"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_ingredient" />
-
-        <TextView
-            android:id="@+id/titleTextView"
-            style="@style/widgets_subtitleText.bold"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/widgets_padding_size.big"
-            android:text="@string/app_recipes" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recipeRecyclerView"
+        <LinearLayout
+            android:id="@+id/homeLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_recipe" />
+            android:visibility="gone"
+            tools:visibility="visible">
 
-    </LinearLayout>
+            <com.google.android.material.search.SearchBar
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/widgets_color"
+                android:hint="@string/app_search" />
 
-</LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/ingredientsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingHorizontal="@dimen/widgets_padding_size.small"
+                android:paddingBottom="@dimen/widgets_padding_size.small"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_ingredient" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                style="@style/widgets_subtitleText.bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/widgets_padding_size.big"
+                android:text="@string/app_recipes" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recipeRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_recipe" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.delifit.delifitmobile.widgets.text.emptystates.EmptyState
+        android:id="@+id/homeEmptyState"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/widgets_margin_size.big"
+        android:visibility="gone"
+        app:descriptionEmptyStateList="@string/app_here_you_can_see_your_recipes"
+        app:imageEmptyStateList="@drawable/ic_empty_state"
+        app:titleEmptyStateList="@string/app_empty_list" />
+
+</FrameLayout>

@@ -13,5 +13,4 @@ import retrofit2.http.GET
 interface RecipesServices {
     @GET(ENDPOINT_RECIPES)
     suspend fun getRecipes(): Response<RecipesDataResponse>
-
 }
