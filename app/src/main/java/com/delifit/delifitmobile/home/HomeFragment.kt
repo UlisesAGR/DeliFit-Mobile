@@ -120,4 +120,9 @@ class HomeFragment : Fragment() {
         ingredientsAdapter.resetSelectedItem()
         containerViewModel.filterByIngredient(Constants.EMPTY_STRING)
     }
+
+    override fun onDetach() {
+        super.onDetach()
+        resetFilterToClick()
+    }
 }

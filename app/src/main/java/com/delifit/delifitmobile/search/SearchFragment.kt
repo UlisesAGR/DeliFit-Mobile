@@ -20,7 +20,6 @@ import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.hideSoftKeyboard
 import com.delifit.delifitmobile.utils.onTetWatcher
 import com.delifit.delifitmobile.utils.setOnSafeClickListener
-import com.delifit.delifitmobile.utils.showSoftKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -102,7 +101,6 @@ class SearchFragment : Fragment() {
     private fun setFocusFilter() {
         binding.nameEditText.apply {
             requestFocus()
-            showSoftKeyboard(requireContext())
         }
     }
 

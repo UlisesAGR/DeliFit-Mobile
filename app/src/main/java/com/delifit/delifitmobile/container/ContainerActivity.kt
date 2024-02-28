@@ -13,9 +13,7 @@ import com.delifit.delifitmobile.R
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.collect
-import com.delifit.delifitmobile.utils.layoutVisibilityItemCount
 import com.delifit.delifitmobile.utils.materialDialog
-import com.delifit.delifitmobile.utils.onBackPressedHandler
 import com.delifit.delifitmobile.utils.progressVisibility
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -37,7 +35,6 @@ class ContainerActivity : AppCompatActivity() {
 
     private fun setInitUi() {
         containerViewModel.getRecipesUseCase()
-        onBackPressedHandler()
         setFlows()
     }
 
@@ -60,18 +57,5 @@ class ContainerActivity : AppCompatActivity() {
             textNegativeButton = getString(R.string.app_cancel),
             textPositiveButton = getString(R.string.app_accept),
         )
-    }
-
-    private fun onBackPressedHandler() {
-        onBackPressedDispatcher.onBackPressedHandler(this) {
-            materialDialog(
-                title = getString(R.string.app_message),
-                message = getString(R.string.app_are_you_sure_about_exiting_the_app),
-                textNegativeButton = getString(R.string.app_cancel),
-                textPositiveButton = getString(R.string.app_accept),
-            ) {
-                finish()
-            }
-        }
     }
 }
