@@ -34,7 +34,7 @@ class ContainerActivity : AppCompatActivity() {
     }
 
     private fun setInitUi() {
-        containerViewModel.getRecipesUseCase()
+        containerViewModel.getRecipes()
         setFlows()
     }
 

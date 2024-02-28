@@ -8,6 +8,7 @@ import com.delifit.delifitmobile.core.utils.mock.IngredientMock.ingredientsList
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipeList
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipesResponseSuccess
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.StandardTestDispatcher
 import org.junit.Assert
@@ -44,28 +45,24 @@ class ContainerRepositoryImplTest {
     }
 
     @Test
-    fun `Get Get Ingredients Test`(): Unit = runBlocking {
+    fun `Get Ingredients From Data Source`(): Unit = runBlocking {
         val expected = ingredientsList
         //Given
         Mockito.`when`(ingredientProvider.getIngredients()).thenReturn(ingredientsList)
         //When
-        containerRepositoryImpl.getIngredients().collect { ingredients ->
-            //Then
-            Assert.assertEquals(expected, ingredients)
-        }
+        val actual = containerRepositoryImpl.getIngredients()
+        //Then
+        Assert.assertEquals(expected, actual.first())
     }
 
     @Test
-    fun `Get Recipe List Test`(): Unit = runBlocking {
+    fun `Get Recipes From Data Source`(): Unit = runBlocking {
         val expected = recipeList
         //Given
         Mockito.`when`(containerDataSource.getRecipes()).thenReturn(recipesResponseSuccess)
         //When
-        containerRepositoryImpl.getRecipes().collect { response ->
-            if (response.isSuccessful()) {
-                //Then
-                Assert.assertEquals(expected, response.data)
-            }
-        }
+        val actual = containerRepositoryImpl.getRecipes()
+        //Then
+        Assert.assertEquals(expected, actual.first())
     }
 }

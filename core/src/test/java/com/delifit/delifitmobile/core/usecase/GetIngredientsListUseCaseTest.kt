@@ -6,6 +6,7 @@ import com.delifit.delifitmobile.core.utils.DispatcherRule
 import com.delifit.delifitmobile.core.utils.mock.IngredientMock.ingredientsList
 import com.delifit.delifitmobile.core.utils.mock.IngredientMock.ingredientsListResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Before
@@ -36,14 +37,13 @@ class GetIngredientsListUseCaseTest {
     }
 
     @Test
-    fun `Get Get Ingredients Test`(): Unit = runBlocking {
+    fun `Get Ingredients From Repository`(): Unit = runBlocking {
         val expected = ingredientsList
         //Given
         Mockito.`when`(containerRepository.getIngredients()).thenReturn(ingredientsListResponse)
         //When
-        getIngredientsListUseCase().collect { ingredients ->
-            //Then
-            Assert.assertEquals(expected, ingredients)
-        }
+        val actual = getIngredientsListUseCase()
+        //Then
+        Assert.assertEquals(expected, actual.first())
     }
 }

@@ -7,10 +7,10 @@ package com.delifit.delifitmobile.utils
 
 sealed class Resource<out T>(
     val status: Int,
+    val type: String? = null,
     val data: T? = null,
     val stringCode: String? = null,
     val details: String? = null,
-    val type: String? = null,
     val moreInfo: String? = null,
     val cause: Throwable? = null,
 ) {
@@ -38,9 +38,9 @@ sealed class Resource<out T>(
         cause: Throwable? = null,
     ) : Resource<T>(
         status = status,
+        type = type,
         stringCode = stringCode,
         details = details,
-        type = type,
         moreInfo = moreInfo,
         cause = cause
     )

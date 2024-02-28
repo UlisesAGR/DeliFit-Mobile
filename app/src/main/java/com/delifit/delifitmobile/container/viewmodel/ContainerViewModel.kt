@@ -7,12 +7,11 @@ package com.delifit.delifitmobile.container.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.delifit.delifitmobile.core.data.network.parseError
 import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
-import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
-import com.delifit.delifitmobile.core.data.network.parseError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -34,7 +33,7 @@ class ContainerViewModel @Inject constructor(
     @VisibleForTesting
     var recipeListCurrent: List<Recipe> = emptyList()
 
-    fun getRecipesUseCase() =
+    fun getRecipes() =
         viewModelScope.launch {
             startLoading()
             getRecipesUseCase.invoke()
@@ -61,12 +60,11 @@ class ContainerViewModel @Inject constructor(
                         _containerState.update { state ->
                             state.copy(
                                 message =
-                                    response.details ?: textsProvider.getErrorGettingRecipesLabel(),
+                                response.details ?: textsProvider.getErrorGettingRecipesLabel(),
                             )
                         }
                     }
                 }
-            resetUiState()
         }
 
     @VisibleForTesting
@@ -91,7 +89,6 @@ class ContainerViewModel @Inject constructor(
                         }
                     }
                 }
-            resetUiState()
         }
 
     fun filterByIngredient(ingredient: String) =
@@ -99,11 +96,11 @@ class ContainerViewModel @Inject constructor(
             _containerState.update { state ->
                 state.copy(
                     recipeList =
-                        recipeListCurrent.filter { recipe ->
-                            recipe.ingredients.any { item ->
-                                item.lowercase().contains(ingredient.lowercase())
-                            }
-                        },
+                    recipeListCurrent.filter { recipe ->
+                        recipe.ingredients.any { item ->
+                            item.lowercase().contains(ingredient.lowercase())
+                        }
+                    },
                 )
             }
         }
@@ -113,9 +110,9 @@ class ContainerViewModel @Inject constructor(
             _containerState.update { state ->
                 state.copy(
                     recipeList =
-                        recipeListCurrent.filter { recipe ->
-                            recipe.name?.lowercase()?.contains(ingredient.lowercase()) ?: false
-                        },
+                    recipeListCurrent.filter { recipe ->
+                        recipe.name?.lowercase()?.contains(ingredient.lowercase()) ?: false
+                    },
                 )
             }
         }
@@ -140,15 +137,6 @@ class ContainerViewModel @Inject constructor(
         _containerState.update { state ->
             state.copy(
                 loading = true,
-            )
-        }
-    }
-
-    @VisibleForTesting
-    fun resetUiState() {
-        _containerState.update {
-            it.copy(
-                message = EMPTY_STRING,
             )
         }
     }

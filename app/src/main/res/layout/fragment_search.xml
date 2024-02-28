@@ -36,7 +36,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/widgets_margin_size"
-            android:autofillHints="name"
+            android:autofillHints="none"
             android:background="@android:color/transparent"
             android:focusable="true"
             android:hint="@string/app_search"

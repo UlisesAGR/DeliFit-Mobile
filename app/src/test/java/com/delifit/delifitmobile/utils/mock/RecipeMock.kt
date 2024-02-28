@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.flowOf
 
 object RecipeMock {
     const val recipeName: String = "Pizza"
+    const val errorDetail = "Service not working"
 
     val recipeList: List<Recipe> =
         listOf(
@@ -120,4 +121,24 @@ object RecipeMock {
 
     val recipeListResponseSuccess =
         flowOf(Resource.Success(recipeList))
+
+    val recipeListResponseFailure =
+        flowOf(getRecipeFailureResult())
+
+    val recipeFailureResultDataNull =
+        flowOf(getRecipeFailureResultDataNull())
+
+    private fun getRecipeFailureResult(): Resource<List<Recipe>> =
+        Resource.Failure(
+            status = 0,
+            stringCode = "",
+            details = errorDetail,
+        )
+
+    private fun getRecipeFailureResultDataNull(): Resource<List<Recipe>> =
+        Resource.Failure(
+            status = 0,
+            stringCode = "",
+            details = null,
+        )
 }

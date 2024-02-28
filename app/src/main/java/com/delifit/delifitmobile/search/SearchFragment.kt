@@ -80,9 +80,7 @@ class SearchFragment : Fragment() {
         with(binding) {
             backImageView.setOnSafeClickListener {
                 it.hideSoftKeyboard()
-                findNavController().navigate(
-                    SearchFragmentDirections.actionSearchFragmentToHomeFragment(),
-                )
+                findNavController().popBackStack()
             }
             nameEditText.onTetWatcher { name ->
                 containerViewModel.filterByName(name)

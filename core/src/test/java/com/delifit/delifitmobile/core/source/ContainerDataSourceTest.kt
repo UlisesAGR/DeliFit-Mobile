@@ -36,13 +36,13 @@ class ContainerDataSourceTest {
     }
 
     @Test
-    fun `Get Recipes Test`(): Unit = runBlocking {
+    fun `Get Recipes From Service`(): Unit = runBlocking {
         val expected = recipeList
         //Given
         Mockito.`when`(recipesServices.getRecipes()).thenReturn(recipesDataResponse)
         //When
-        val actual = containerDataSource.getRecipes().data
+        val actual = containerDataSource.getRecipes()
         //Then
-        Assert.assertEquals(expected, actual)
+        Assert.assertEquals(expected, actual.data)
     }
 }

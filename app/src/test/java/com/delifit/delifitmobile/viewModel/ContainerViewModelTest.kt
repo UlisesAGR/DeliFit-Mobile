@@ -8,9 +8,12 @@ import com.delifit.delifitmobile.utils.DispatcherRule
 import com.delifit.delifitmobile.utils.mock.IngredientMock.ingredientName
 import com.delifit.delifitmobile.utils.mock.IngredientMock.ingredientsList
 import com.delifit.delifitmobile.utils.mock.IngredientMock.ingredientsListResponse
+import com.delifit.delifitmobile.utils.mock.RecipeMock.errorDetail
 import com.delifit.delifitmobile.utils.mock.RecipeMock.listFilteredRecipes
 import com.delifit.delifitmobile.utils.mock.RecipeMock.recipe
+import com.delifit.delifitmobile.utils.mock.RecipeMock.recipeFailureResultDataNull
 import com.delifit.delifitmobile.utils.mock.RecipeMock.recipeList
+import com.delifit.delifitmobile.utils.mock.RecipeMock.recipeListResponseFailure
 import com.delifit.delifitmobile.utils.mock.RecipeMock.recipeListResponseSuccess
 import com.delifit.delifitmobile.utils.mock.RecipeMock.recipeName
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -52,18 +55,41 @@ class ContainerViewModelTest {
     }
 
     @Test
-    fun `Get Recipe List Test`(): Unit = runBlocking {
+    fun `Get Recipes From Use Case Response Is Success`(): Unit = runBlocking {
         val expected = recipeList
         //Given
         Mockito.`when`(getRecipesUseCase()).thenReturn(recipeListResponseSuccess)
         //When
-        containerViewModel.getRecipesUseCase()
+        containerViewModel.getRecipes()
         //Then
         assertEquals(expected, containerViewModel.containerState.value.recipeList)
     }
 
     @Test
-    fun `Get Ingredients List Test`(): Unit = runBlocking {
+    fun `Get Recipes From Use Case Response Is Failure`(): Unit = runBlocking {
+        val expected = errorDetail
+        //Given
+        Mockito.`when`(getRecipesUseCase()).thenReturn(recipeListResponseFailure)
+        //When
+        containerViewModel.getRecipes()
+        //Then
+        assertEquals(expected, containerViewModel.containerState.value.message)
+    }
+
+    @Test
+    fun `Get Recipes From Use Case Response Is Failure And Detail Is Null`(): Unit = runBlocking {
+        val expected = errorDetail
+        //Given
+        Mockito.`when`(getRecipesUseCase()).thenReturn(recipeFailureResultDataNull)
+        Mockito.`when`(textsProvider.getErrorGettingRecipesLabel()).thenReturn(errorDetail)
+        //When
+        containerViewModel.getRecipes()
+        //Then
+        assertEquals(expected, containerViewModel.containerState.value.message)
+    }
+
+    @Test
+    fun `Get Ingredients From Use Case`(): Unit = runBlocking {
         val expected = ingredientsList
         //Given
         Mockito.`when`(getIngredientsListUseCase()).thenReturn(ingredientsListResponse)
@@ -74,7 +100,7 @@ class ContainerViewModelTest {
     }
 
     @Test
-    fun `Filter By Ingredient`() = runBlocking {
+    fun `Filter List By Ingredient`() = runBlocking {
         val expected = listFilteredRecipes
         //Given
         containerViewModel.recipeListCurrent = recipeList
@@ -82,10 +108,11 @@ class ContainerViewModelTest {
         containerViewModel.filterByIngredient(ingredientName)
         //Then
         assertEquals(expected, containerViewModel.containerState.value.recipeList)
+        assertEquals(false, containerViewModel.containerState.value.loading)
     }
 
     @Test
-    fun `Filter By Name`() = runBlocking {
+    fun `Filter List By Name`() = runBlocking {
         val expected = listFilteredRecipes
         //Given
         containerViewModel.recipeListCurrent = recipeList
@@ -96,7 +123,7 @@ class ContainerViewModelTest {
     }
 
     @Test
-    fun `Filter By Id`(): Unit = runBlocking {
+    fun `Filter List By Id`(): Unit = runBlocking {
         val expected = recipe
         val recipeId = 0
         //Given
@@ -130,15 +157,5 @@ class ContainerViewModelTest {
         containerViewModel.startLoading()
         //Then
         assertEquals(expected, containerViewModel.containerState.value.loading)
-    }
-
-    @Test
-    fun `Reset Ui State`(): Unit = runBlocking {
-        //Given
-        val expected = ""
-        //When
-        containerViewModel.resetUiState()
-        //Then
-        assertEquals(expected, containerViewModel.containerState.value.message)
     }
 }
