@@ -21,6 +21,7 @@ import com.delifit.delifitmobile.detail.adapter.IngredientsListAdapter
 import com.delifit.delifitmobile.detail.adapter.StepsListAdapter
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.load
+import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.widgets.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -170,7 +171,7 @@ class DetailFragment : Fragment() {
             toolbar.setNavigationOnClickListener {
                 findNavController().popBackStack()
             }
-            mapButton.setOnClickListener {
+            mapButton.setOnSafeClickListener {
                 findNavController().navigate(
                     DetailFragmentDirections.actionDetailFragmentToMapFragment(recipeId),
                 )

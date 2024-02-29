@@ -10,7 +10,7 @@ import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipesResponseSucce
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.test.StandardTestDispatcher
+import kotlinx.coroutines.test.TestCoroutineDispatcher
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
@@ -40,7 +40,7 @@ class ContainerRepositoryImplTest {
             ContainerRepositoryImpl(
                 ingredientProvider,
                 containerDataSource,
-                StandardTestDispatcher(),
+                TestCoroutineDispatcher(),
             )
     }
 
