@@ -67,7 +67,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun setRecipeSearchRecyclerView() {
-        binding.recipeSearchRecyclerView.apply {
+        binding.searchRecyclerView.apply {
             setHasFixedSize(true)
             adapter = recipeSearchAdapter
         }
@@ -101,7 +101,7 @@ class SearchFragment : Fragment() {
         }
     }
 
-    private fun setRecipeAdapterList(recipeList: List<Recipe>) {
+    fun setRecipeAdapterList(recipeList: List<Recipe>) {
         recipeSearchAdapter.setList(recipeList)
     }
 

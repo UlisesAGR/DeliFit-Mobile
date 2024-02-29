@@ -80,11 +80,11 @@ class DetailFragment : Fragment() {
 
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
-            setDataToView(state.recipe)
+            setData(state.recipe)
         }
     }
 
-    private fun setDataToView(state: Recipe?) {
+    fun setData(state: Recipe?) {
         state?.let {
             state.apply {
                 recipeId = id
@@ -98,8 +98,6 @@ class DetailFragment : Fragment() {
                 setIngredientsList(ingredients)
                 setStepsList(steps)
             }
-        } ?: run {
-            findNavController().popBackStack()
         }
     }
 

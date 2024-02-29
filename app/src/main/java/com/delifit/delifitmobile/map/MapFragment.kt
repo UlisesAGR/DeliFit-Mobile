@@ -30,7 +30,7 @@ class MapFragment : Fragment() {
     private val containerViewModel: ContainerViewModel by activityViewModels()
     private val mapFragmentArgs: MapFragmentArgs by navArgs()
 
-    private lateinit var map: GoogleMap
+    lateinit var googleMap: GoogleMap
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,8 +55,8 @@ class MapFragment : Fragment() {
 
     private fun initMap() {
         (childFragmentManager.findFragmentById(R.id.mapFrameLayout) as SupportMapFragment)
-            .getMapAsync { googleMap ->
-                map = googleMap
+            .getMapAsync { map ->
+                googleMap = map
                 getData()
             }
     }
@@ -72,9 +72,9 @@ class MapFragment : Fragment() {
         }
     }
 
-    private fun createMarker(recipe: Recipe?) {
+    fun createMarker(recipe: Recipe?) {
         recipe?.apply {
-            map.setMap(
+            googleMap.setMap(
                 origin,
                 latitude,
                 longitude,

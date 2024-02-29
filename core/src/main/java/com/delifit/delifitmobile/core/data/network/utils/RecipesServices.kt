@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 25/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.core.data.network
+package com.delifit.delifitmobile.core.data.network.utils
 
 import com.delifit.delifitmobile.core.BuildConfig.ENDPOINT_RECIPES
 import com.delifit.delifitmobile.core.data.network.response.RecipesDataResponse

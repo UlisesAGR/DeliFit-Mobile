@@ -63,6 +63,6 @@ class ContainerRepositoryImplTest {
         //When
         val actual = containerRepositoryImpl.getRecipes()
         //Then
-        Assert.assertEquals(expected, actual.first())
+        Assert.assertEquals(expected, actual.first().data)
     }
 }

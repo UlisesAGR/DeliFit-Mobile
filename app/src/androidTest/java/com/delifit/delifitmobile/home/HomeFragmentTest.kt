@@ -9,14 +9,14 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.delifit.delifitmobile.R
-import com.delifit.delifitmobile.utils.ListMock.ingredientsList
-import com.delifit.delifitmobile.utils.ListMock.recipeList
+import com.delifit.delifitmobile.utils.Mocks.ingredientsList
+import com.delifit.delifitmobile.utils.Mocks.recipeList
 import com.delifit.delifitmobile.utils.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -26,7 +26,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.Mockito
+import org.mockito.Mockito.mock
 import org.mockito.Mockito.verify
 
 @MediumTest
@@ -44,7 +44,7 @@ class HomeFragmentTest {
 
     @Test
     fun homeFragment_Validate_EmptyState_Visibility() {
-        val navController = Mockito.mock(NavController::class.java)
+        val navController = mock(NavController::class.java)
 
         launchFragmentInHiltContainer<HomeFragment> {
             Navigation.setViewNavController(requireView(), navController)
@@ -54,15 +54,15 @@ class HomeFragmentTest {
         }
 
         onView(withId(R.id.homeLayout))
-            .check(matches(not(ViewMatchers.isDisplayed())))
+            .check(matches(not(isDisplayed())))
 
         onView(withId(R.id.homeEmptyState))
-            .check(matches(ViewMatchers.isDisplayed()))
+            .check(matches(isDisplayed()))
     }
 
     @Test
-    fun click_SearchBar_And_Navigate_To_SearchFragment() {
-        val navController = Mockito.mock(NavController::class.java)
+    fun click_SearchBar_Navigate_To_SearchFragment() {
+        val navController = mock(NavController::class.java)
 
         launchFragmentInHiltContainer<HomeFragment> {
             Navigation.setViewNavController(requireView(), navController)
@@ -81,7 +81,7 @@ class HomeFragmentTest {
 
     @Test
     fun homeFragment_Validate_Subtitle_Is_Correct() {
-        val navController = Mockito.mock(NavController::class.java)
+        val navController = mock(NavController::class.java)
 
         launchFragmentInHiltContainer<HomeFragment> {
             Navigation.setViewNavController(requireView(), navController)
@@ -94,12 +94,13 @@ class HomeFragmentTest {
             ApplicationProvider.getApplicationContext<Context>()
                 .getString(R.string.app_recipes)
 
-        onView(withId(R.id.subtitle)).check(matches(withText(subTitle)))
+        onView(withId(R.id.subtitleTextView))
+            .check(matches(withText(subTitle)))
     }
 
     @Test
-    fun click_SearchBar_And_Navigate_To_DetailFragment() {
-        val navController = Mockito.mock(NavController::class.java)
+    fun click_RecyclerView_Navigate_To_DetailFragment() {
+        val navController = mock(NavController::class.java)
         val positionId = 0
 
         launchFragmentInHiltContainer<HomeFragment> {

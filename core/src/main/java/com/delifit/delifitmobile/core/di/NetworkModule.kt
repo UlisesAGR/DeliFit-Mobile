@@ -6,7 +6,7 @@
 package com.delifit.delifitmobile.core.di
 
 import com.delifit.delifitmobile.core.BuildConfig.BASE_URL
-import com.delifit.delifitmobile.core.data.network.RecipesServices
+import com.delifit.delifitmobile.core.data.network.utils.RecipesServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

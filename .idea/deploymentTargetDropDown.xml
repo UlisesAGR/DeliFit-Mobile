@@ -2,22 +2,7 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="ContainerActivityTest">
-        <State />
-      </entry>
-      <entry key="HomeFragmentTest">
-        <State />
-      </entry>
       <entry key="app">
-        <State />
-      </entry>
-      <entry key="testInitContainerActivity()">
-        <State />
-      </entry>
-      <entry key="testNavigationToInGameScreen()">
-        <State />
-      </entry>
-      <entry key="testVisibilityFromContainerActivity()">
         <State />
       </entry>
     </value>

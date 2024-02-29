@@ -3,9 +3,30 @@ package com.delifit.delifitmobile.utils
 import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.model.Steps
-import kotlinx.coroutines.flow.flowOf
 
-object ListMock {
+object Mocks {
+    val recipe: Recipe =
+        Recipe(
+            id = 0,
+            name = "Name",
+            description = "Description",
+            smallDescription = "Small Description",
+            time = "45 min",
+            calories = "125 kcal",
+            level = "Hard",
+            ingredients = listOf("Tomato", "Water"),
+            steps = listOf(
+                Steps(
+                    number = 1,
+                    description = "Shake",
+                ),
+            ),
+            image = "www.image.com",
+            origin = "africa",
+            latitude = 37.09024,
+            longitude = -95.712891,
+        )
+
     val recipeList: List<Recipe> =
         listOf(
             Recipe(

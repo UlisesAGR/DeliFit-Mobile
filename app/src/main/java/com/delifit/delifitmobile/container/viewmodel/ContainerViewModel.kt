@@ -7,7 +7,7 @@ package com.delifit.delifitmobile.container.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.delifit.delifitmobile.core.data.network.parseError
+import com.delifit.delifitmobile.core.data.network.utils.parseError
 import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
