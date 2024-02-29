@@ -22,7 +22,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.delifit.delifitmobile.utils.Runner"
     }
 
     buildTypes {
@@ -87,12 +87,16 @@ dependencies {
     ksp(libs.com.hilt.compiler)
     ksp(libs.com.glide.compiler)
 
-    testImplementation(libs.test.junit.junit)
+    testImplementation(libs.test.junit)
     testImplementation(libs.test.coroutines)
-    testImplementation(libs.test.robolectric.robolectric)
-
     testImplementation(libs.bundles.test.mockito.libs)
 
-    androidTestImplementation(libs.androidTest.junit.junit)
-    androidTestImplementation(libs.androidTest.espresso.core)
+    androidTestImplementation(libs.androidTest.junit)
+    androidTestImplementation(libs.androidTest.mockito)
+    androidTestImplementation(libs.androidTest.coroutines)
+    androidTestImplementation(libs.androidTest.hilt)
+
+    androidTestImplementation(libs.bundles.androidTest.espresso.libs)
+
+    debugImplementation(libs.debug.test.fragment)
 }

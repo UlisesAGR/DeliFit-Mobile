@@ -23,10 +23,13 @@ lib-maps = '18.2.0'
 #test
 test-junit = '4.13.2'
 test-mockito = '4.4.0'
-test-robolectric = '4.9.2'
 #androidTest
 androidTest-junit = '1.1.5'
 androidTest-espresso = '3.5.1'
+androidTest-runer = '1.5.2'
+androidTest-rules = '1.5.0'
+#debug
+debug-test-fragment = '1.6.2'
 #plugins
 plugin-application = "8.2.2"
 plugin-library = "8.2.2"
@@ -63,14 +66,21 @@ com-maps = { module = 'com.google.android.gms:play-services-maps', version.ref =
 #org
 org-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-android', version.ref = 'lib-coroutines' }
 #test
-test-junit-junit = { module = 'junit:junit', version.ref = 'test-junit' }
+test-junit = { module = 'junit:junit', version.ref = 'test-junit' }
 test-mockito-core = { module = 'org.mockito:mockito-core', version.ref = 'test-mockito' }
 test-mockito-inline = { module = 'org.mockito:mockito-inline', version.ref = 'test-mockito' }
 test-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-test', version.ref = 'lib-coroutines' }
-test-robolectric-robolectric = { module = 'org.robolectric:robolectric', version.ref = 'test-robolectric' }
 #androidTest
-androidTest-junit-junit = { module = 'androidx.test.ext:junit', version.ref = 'androidTest-junit' }
+androidTest-junit = { module = 'androidx.test.ext:junit', version.ref = 'androidTest-junit' }
+androidTest-mockito = { module = 'org.mockito:mockito-android', version.ref = 'test-mockito' }
+androidTest-coroutines = { module = 'org.jetbrains.kotlinx:kotlinx-coroutines-test', version.ref = 'lib-coroutines' }
+androidTest-hilt = { module = 'com.google.dagger:hilt-android-testing', version.ref = 'lib-hilt' }
 androidTest-espresso-core = { module = 'androidx.test.espresso:espresso-core', version.ref = 'androidTest-espresso' }
+androidTest-espresso-contrib = { module = 'androidx.test.espresso:espresso-contrib', version.ref = 'androidTest-espresso' }
+androidTest-test-runner = { module = 'androidx.test:runner', version.ref = 'androidTest-runer' }
+androidTest-test-rules = { module = 'androidx.test:rules', version.ref = 'androidTest-rules' }
+#debug
+debug-test-fragment = { module = 'androidx.fragment:fragment-testing', version.ref = 'debug-test-fragment' }
 
 [bundles]
 androidx-lifecycle-libs = [
@@ -89,6 +99,12 @@ androidx-navigation = [
 test-mockito-libs = [
     'test-mockito-core',
     'test-mockito-inline',
+]
+androidTest-espresso-libs = [
+    'androidTest-espresso-core',
+    'androidTest-espresso-contrib',
+    'androidTest-test-runner',
+    'androidTest-test-rules',
 ]
 
 [plugins]

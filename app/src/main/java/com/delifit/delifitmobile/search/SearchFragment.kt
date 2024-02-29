@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentSearchBinding
 import com.delifit.delifitmobile.search.adapter.RecipeSearchAdapter
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
@@ -49,9 +50,9 @@ class SearchFragment : Fragment() {
     }
 
     private fun setInitUi() {
+        binding.nameEditText.requestFocus()
         setRecipeSearchAdapter()
         setRecipeSearchRecyclerView()
-        setFocusFilter()
         setListeners()
         setFlows()
     }
@@ -60,11 +61,7 @@ class SearchFragment : Fragment() {
         recipeSearchAdapter =
             RecipeSearchAdapter(
                 onItemSelected = { recipe ->
-                    binding.root.hideSoftKeyboard()
-                    findNavController().navigate(
-                        SearchFragmentDirections.actionSearchFragmentToDetailFragment(recipe.id),
-                    )
-                    clearFilter()
+                    goToSearch(recipe.id)
                 },
             )
     }
@@ -90,16 +87,22 @@ class SearchFragment : Fragment() {
             }
         }
 
+    private fun goToSearch(id: Int) {
+        binding.root.hideSoftKeyboard()
+        findNavController().navigate(
+            SearchFragmentDirections.actionSearchFragmentToDetailFragment(id),
+        )
+        clearFilter()
+    }
+
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
-            recipeSearchAdapter.setList(state.recipeList)
+            setRecipeAdapterList(state.recipeList)
         }
     }
 
-    private fun setFocusFilter() {
-        binding.nameEditText.apply {
-            requestFocus()
-        }
+    private fun setRecipeAdapterList(recipeList: List<Recipe>) {
+        recipeSearchAdapter.setList(recipeList)
     }
 
     private fun clearFilter() {

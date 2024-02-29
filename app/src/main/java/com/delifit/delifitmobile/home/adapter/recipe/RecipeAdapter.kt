@@ -11,8 +11,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 class RecipeAdapter(
     private var recipeList: MutableList<Recipe> = mutableListOf(),
@@ -40,9 +38,8 @@ class RecipeAdapter(
     override fun getItemCount(): Int = recipeList.size
 
     @SuppressLint("NotifyDataSetChanged")
-    suspend fun setList(list: List<Recipe>) =
-        withContext(Dispatchers.Main) {
-            recipeList = list.toMutableList()
-            notifyDataSetChanged()
-        }
+    fun setList(list: List<Recipe>) {
+        recipeList = list.toMutableList()
+        notifyDataSetChanged()
+    }
 }

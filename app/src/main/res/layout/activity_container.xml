@@ -6,12 +6,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".container.ContainerActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/containerLayout"
+        android:id="@+id/containerFragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

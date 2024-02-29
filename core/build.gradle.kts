@@ -69,9 +69,7 @@ dependencies {
 
     ksp(libs.com.hilt.compiler)
 
-    testImplementation(libs.test.junit.junit)
-    testImplementation(libs.test.coroutines)
-    testImplementation(libs.test.robolectric.robolectric)
-
+    testImplementation(libs.test.junit)
     testImplementation(libs.bundles.test.mockito.libs)
+    testImplementation(libs.test.coroutines)
 }

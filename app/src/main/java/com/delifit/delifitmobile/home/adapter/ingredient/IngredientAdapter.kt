@@ -13,8 +13,6 @@ import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientViewHolder.Companion.selectedItem
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.widgets.databinding.ItemIngredientBinding
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 
 @SuppressLint("NotifyDataSetChanged")
 class IngredientAdapter(
@@ -42,13 +40,12 @@ class IngredientAdapter(
 
     override fun getItemCount(): Int = ingredientList.size
 
-    suspend fun setList(list: List<Ingredient>) =
-        withContext(Dispatchers.Main) {
-            ingredientList = list
-            notifyDataSetChanged()
-        }
+    fun setList(list: List<Ingredient>) {
+        ingredientList = list
+        notifyDataSetChanged()
+    }
 
-    fun notifyDataChanged() {
+    fun dataSetChanged() {
         notifyDataSetChanged()
     }
 

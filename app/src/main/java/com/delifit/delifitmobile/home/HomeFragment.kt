@@ -13,6 +13,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.core.domain.model.Ingredient
+import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
@@ -62,7 +64,7 @@ class HomeFragment : Fragment() {
         ingredientsAdapter =
             IngredientAdapter(
                 onItemSelected = { ingredient ->
-                    ingredientsAdapter.notifyDataChanged()
+                    ingredientsAdapter.dataSetChanged()
                     containerViewModel.filterByIngredient(ingredient)
                 },
             )
@@ -79,9 +81,7 @@ class HomeFragment : Fragment() {
         recipeAdapter =
             RecipeAdapter(
                 onItemSelected = { recipe ->
-                    findNavController().navigate(
-                        HomeFragmentDirections.actionHomeFragmentToDetailActivity(recipe.id),
-                    )
+                    goToDetail(recipe.id)
                 },
             )
     }
@@ -96,22 +96,40 @@ class HomeFragment : Fragment() {
     private fun setListeners() =
         with(binding) {
             searchView.setOnClickListener {
-                findNavController().navigate(
-                    HomeFragmentDirections.actionHomeFragmentToSearchFragment(),
-                )
-                resetFilterToClick()
+                goToSearch()
             }
         }
 
+    private fun goToDetail(id: Int) {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToDetailActivity(id),
+        )
+    }
+
+    private fun goToSearch() {
+        findNavController().navigate(
+            HomeFragmentDirections.actionHomeFragmentToSearchFragment(),
+        )
+        resetFilterToClick()
+    }
+
     private fun setFlows() {
         collect(containerViewModel.containerState) { state ->
-            ingredientsAdapter.setList(state.ingredientsList)
-            recipeAdapter.setList(state.recipeList)
+            setIngredientsAdapterList(state.ingredientsList)
+            setRecipeAdapterList(state.recipeList)
             validateLayoutVisibility(state.recipeList.size)
         }
     }
 
-    private fun validateLayoutVisibility(size: Int) {
+    fun setRecipeAdapterList(recipeList: List<Recipe>) {
+        recipeAdapter.setList(recipeList)
+    }
+
+    fun setIngredientsAdapterList(ingredientsList: List<Ingredient>) {
+        ingredientsAdapter.setList(ingredientsList)
+    }
+
+    fun validateLayoutVisibility(size: Int) {
         binding.homeLayout.layoutVisibilityItemCount(size)
         binding.homeEmptyState.emptyStateVisibilityItemCount(size)
     }

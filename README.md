@@ -53,9 +53,9 @@ Principal mente podriamos listar los conceptos utilizados en esta app
 <h1>App Navigation</h1>
 *Dentro del contenedor que es la "activity" utilice un "NavigationController" para poder facilitarme la navegacion entre mis diferentes "fragments"
 <br/><br/>
-</b>Navigation</b>
+<b>Navigation</b>
 <br/>
-</b>Fragments</b>
+<b>Fragments</b>
 
 <br/>
 
