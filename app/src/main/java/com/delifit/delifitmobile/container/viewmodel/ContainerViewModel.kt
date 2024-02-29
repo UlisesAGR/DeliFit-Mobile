@@ -133,11 +133,12 @@ class ContainerViewModel @Inject constructor(
         }
 
     @VisibleForTesting
-    fun startLoading() {
-        _containerState.update { state ->
-            state.copy(
-                loading = true,
-            )
+    fun startLoading() =
+        viewModelScope.launch {
+            _containerState.update { state ->
+                state.copy(
+                    loading = true,
+                )
+            }
         }
-    }
 }

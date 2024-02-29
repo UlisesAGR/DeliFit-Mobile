@@ -8,7 +8,6 @@ package com.delifit.delifitmobile.search.adapter
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.load
-import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemRecipeSearchBinding
@@ -25,7 +24,7 @@ class RecipeSearchViewHolder(
             setName(name)
             setSmallDescription(smallDescription)
         }
-        root.setOnSafeClickListener {
+        root.setOnClickListener {
             onItemSelected(recipe)
         }
     }

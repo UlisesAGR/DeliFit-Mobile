@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.setImageViewAnimation
-import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ItemIngredientBinding
 
@@ -27,7 +26,7 @@ class IngredientViewHolder(
             nameTextView.text = name
         }
         setSelectedIngredient(ingredient.name)
-        ingredientMaterialCardView.setOnSafeClickListener {
+        ingredientMaterialCardView.setOnClickListener {
             selectedItem =
                 if (ingredient.name != selectedItem) {
                     ingredient.name

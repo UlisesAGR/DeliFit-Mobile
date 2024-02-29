@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.utils.LevelCooking
 import com.delifit.delifitmobile.utils.load
-import com.delifit.delifitmobile.utils.setOnSafeClickListener
 import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.utils.toLevelCooking
 import com.delifit.delifitmobile.widgets.R
@@ -31,7 +30,7 @@ class RecipeViewHolder(
             setTime(time)
             setStatus(level.toLevelCooking())
         }
-        root.setOnSafeClickListener {
+        root.setOnClickListener {
             onItemSelected(recipe)
         }
     }

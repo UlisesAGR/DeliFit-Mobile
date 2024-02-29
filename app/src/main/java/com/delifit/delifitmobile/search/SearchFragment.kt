@@ -75,7 +75,7 @@ class SearchFragment : Fragment() {
 
     private fun setListeners() =
         with(binding) {
-            backImageView.setOnSafeClickListener {
+            backImageView.setOnClickListener {
                 it.hideSoftKeyboard()
                 findNavController().popBackStack()
             }
