@@ -123,7 +123,7 @@ Principal mente podriamos listar los conceptos utilizados en esta app
 <br/>
 
 <h1>Gradle</h1>
-*Utilice el versionado de dependencias para tener un estandar con mis dependencia y "ProGuard" para poder optimizar, ofuscar las clases al momento de hacer el release, ademas de configtuar otras "buildConfigs"
+*Utilice el versionado de dependencias para tener un estandar con mis dependencias y "ProGuard" para poder optimizar, ofuscar las clases al momento de hacer el release, ademas de configtuar otras "buildConfigs"
 
 <b>Version catalog</b>
 
