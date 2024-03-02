@@ -18,7 +18,7 @@ import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
 import com.delifit.delifitmobile.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.home.adapter.recipe.RecipeAdapter
-import com.delifit.delifitmobile.utils.Constants
+import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.emptyStateVisibilityItemCount
 import com.delifit.delifitmobile.utils.layoutVisibilityItemCount
@@ -136,7 +136,7 @@ class HomeFragment : Fragment() {
 
     private fun resetFilterToClick() {
         ingredientsAdapter.resetSelectedItem()
-        containerViewModel.filterByIngredient(Constants.EMPTY_STRING)
+        containerViewModel.filterByIngredient(EMPTY_STRING)
     }
 
     override fun onDetach() {

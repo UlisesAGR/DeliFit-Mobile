@@ -61,7 +61,7 @@ class SearchFragment : Fragment() {
         recipeSearchAdapter =
             RecipeSearchAdapter(
                 onItemSelected = { recipe ->
-                    goToSearch(recipe.id)
+                    goToDetail(recipe.id)
                 },
             )
     }
@@ -78,6 +78,7 @@ class SearchFragment : Fragment() {
             backImageView.setOnClickListener {
                 it.hideSoftKeyboard()
                 findNavController().popBackStack()
+                resetFilterToClick()
             }
             nameEditText.onTetWatcher { name ->
                 containerViewModel.filterByName(name)
@@ -87,7 +88,7 @@ class SearchFragment : Fragment() {
             }
         }
 
-    private fun goToSearch(id: Int) {
+    private fun goToDetail(id: Int) {
         binding.root.hideSoftKeyboard()
         findNavController().navigate(
             SearchFragmentDirections.actionSearchFragmentToDetailFragment(id),
@@ -107,5 +108,9 @@ class SearchFragment : Fragment() {
 
     private fun clearFilter() {
         binding.nameEditText.setText(EMPTY_STRING)
+    }
+
+    private fun resetFilterToClick() {
+        containerViewModel.filterByIngredient(EMPTY_STRING)
     }
 }
