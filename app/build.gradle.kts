@@ -41,6 +41,7 @@ android {
         }
         debug {
             isDebuggable = true
+            applicationIdSuffix = ".debug"
             resValue("string", "app_name", "DeliFit Debug")
         }
     }

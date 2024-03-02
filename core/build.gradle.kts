@@ -18,7 +18,6 @@ android {
         minSdk = 26
 
         buildConfigField("String", "BASE_URL", "\"http://demo4853406.mockable.io/\"")
-        buildConfigField("String", "ENDPOINT_RECIPES", "\"recipes\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -32,6 +31,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro",
             )
+            buildConfigField("String", "ENDPOINT_RECIPES", "\"recipes\"")
+        }
+        debug {
+            buildConfigField("String", "ENDPOINT_RECIPES", "\"recipes\"")
         }
     }
     compileOptions {
