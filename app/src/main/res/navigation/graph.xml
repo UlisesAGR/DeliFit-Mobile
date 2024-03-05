@@ -10,7 +10,7 @@
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.delifit.delifitmobile.home.HomeFragment"
+        android:name="com.delifit.delifitmobile.ui.home.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home">
         <action
@@ -30,7 +30,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.delifit.delifitmobile.detail.DetailFragment"
+        android:name="com.delifit.delifitmobile.ui.detail.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.delifit.delifitmobile.map.MapFragment"
+        android:name="com.delifit.delifitmobile.ui.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map">
         <argument
@@ -55,12 +55,12 @@
     </fragment>
     <activity
         android:id="@+id/containerActivity"
-        android:name="com.delifit.delifitmobile.container.ContainerActivity"
+        android:name="com.delifit.delifitmobile.ui.container.ContainerActivity"
         android:label="activity_container"
         tools:layout="@layout/activity_container" />
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.delifit.delifitmobile.search.SearchFragment"
+        android:name="com.delifit.delifitmobile.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search">
         <action

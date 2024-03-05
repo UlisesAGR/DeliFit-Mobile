@@ -1,6 +1,6 @@
 package com.delifit.delifitmobile.core.source
 
-import com.delifit.delifitmobile.core.data.network.utils.RecipesServices
+import com.delifit.delifitmobile.core.data.network.service.RecipesServices
 import com.delifit.delifitmobile.core.data.source.ContainerDataSource
 import com.delifit.delifitmobile.core.utils.DispatcherRule
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipeList

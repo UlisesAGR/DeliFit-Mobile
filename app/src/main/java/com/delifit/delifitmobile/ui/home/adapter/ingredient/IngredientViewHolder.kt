@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 24/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.home.adapter.ingredient
+package com.delifit.delifitmobile.ui.home.adapter.ingredient
 
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Ingredient

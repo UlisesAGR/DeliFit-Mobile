@@ -1,27 +1,27 @@
 /*
- * RecipeSearchAdapter.kt
- * Created by Ulises Gonzalez on 25/02/24
+ * RecipeAdapter.kt
+ * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.search.adapter
+package com.delifit.delifitmobile.ui.home.adapter.recipe
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Recipe
-import com.delifit.delifitmobile.widgets.databinding.ItemRecipeSearchBinding
+import com.delifit.delifitmobile.widgets.databinding.ItemRecipeBinding
 
-class RecipeSearchAdapter(
+class RecipeAdapter(
     private var recipeList: MutableList<Recipe> = mutableListOf(),
     private val onItemSelected: (Recipe) -> Unit,
-) : RecyclerView.Adapter<RecipeSearchViewHolder>() {
+) : RecyclerView.Adapter<RecipeViewHolder>() {
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int,
-    ): RecipeSearchViewHolder =
-        RecipeSearchViewHolder(
-            ItemRecipeSearchBinding.inflate(
+    ): RecipeViewHolder =
+        RecipeViewHolder(
+            ItemRecipeBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false,
@@ -29,7 +29,7 @@ class RecipeSearchAdapter(
         )
 
     override fun onBindViewHolder(
-        holder: RecipeSearchViewHolder,
+        holder: RecipeViewHolder,
         position: Int,
     ) {
         holder.render(recipeList[position], onItemSelected)

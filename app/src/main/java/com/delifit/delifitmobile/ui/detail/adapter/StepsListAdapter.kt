@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 25/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.detail.adapter
+package com.delifit.delifitmobile.ui.detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

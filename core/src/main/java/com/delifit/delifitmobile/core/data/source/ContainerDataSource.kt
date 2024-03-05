@@ -5,7 +5,7 @@
  */
 package com.delifit.delifitmobile.core.data.source
 
-import com.delifit.delifitmobile.core.data.network.utils.RecipesServices
+import com.delifit.delifitmobile.core.data.network.service.RecipesServices
 import com.delifit.delifitmobile.core.data.network.utils.toResult
 import com.delifit.delifitmobile.core.domain.model.toDomain
 import javax.inject.Inject

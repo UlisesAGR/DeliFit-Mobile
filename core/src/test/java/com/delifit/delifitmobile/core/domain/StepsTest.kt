@@ -13,8 +13,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class StepsTest {
     @Test
     fun `Validate Transformation Of StepsResponse To Steps`() = runBlocking {
+        //Given
         val expected = steps
+        //When
         val actual = stepsResponse.toDomain()
+        //Then
         Assert.assertEquals(expected, actual)
     }
 }

@@ -13,8 +13,11 @@ import org.mockito.junit.MockitoJUnitRunner
 class ProductTest {
     @Test
     fun `Validate Transformation Of RecipeResponse To Recipe`() = runBlocking {
+        //Given
         val expected = recipe
+        //When
         val actual = recipeResponse.toDomain()
+        //Then
         Assert.assertEquals(expected, actual)
     }
 }

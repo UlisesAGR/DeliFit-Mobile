@@ -3,14 +3,14 @@
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.container
+package com.delifit.delifitmobile.ui.container
 
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.delifit.delifitmobile.R
-import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.materialDialog

@@ -1,6 +1,6 @@
 package com.delifit.delifitmobile.viewModel
 
-import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase

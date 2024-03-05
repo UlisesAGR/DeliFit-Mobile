@@ -3,14 +3,14 @@
  * Created by Ulises Gonzalez on 24/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.home.adapter.ingredient
+package com.delifit.delifitmobile.ui.home.adapter.ingredient
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.delifit.delifitmobile.core.domain.model.Ingredient
-import com.delifit.delifitmobile.home.adapter.ingredient.IngredientViewHolder.Companion.selectedItem
+import com.delifit.delifitmobile.ui.home.adapter.ingredient.IngredientViewHolder.Companion.selectedItem
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.widgets.databinding.ItemIngredientBinding
 

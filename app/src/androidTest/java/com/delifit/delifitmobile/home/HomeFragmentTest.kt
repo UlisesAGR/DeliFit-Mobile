@@ -15,6 +15,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.delifit.delifitmobile.R
+import com.delifit.delifitmobile.ui.home.HomeFragment
+import com.delifit.delifitmobile.ui.home.HomeFragmentDirections
 import com.delifit.delifitmobile.utils.Mocks.ingredientsList
 import com.delifit.delifitmobile.utils.Mocks.recipeList
 import com.delifit.delifitmobile.utils.launchFragmentInHiltContainer

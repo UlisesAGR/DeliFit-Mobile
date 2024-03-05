@@ -15,6 +15,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.delifit.delifitmobile.R
+import com.delifit.delifitmobile.ui.detail.DetailFragment
+import com.delifit.delifitmobile.ui.detail.DetailFragmentDirections
 import com.delifit.delifitmobile.utils.Mocks
 import com.delifit.delifitmobile.utils.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule

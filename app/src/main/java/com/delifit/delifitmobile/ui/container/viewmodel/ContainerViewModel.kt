@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 24/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.container.viewmodel
+package com.delifit.delifitmobile.ui.container.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

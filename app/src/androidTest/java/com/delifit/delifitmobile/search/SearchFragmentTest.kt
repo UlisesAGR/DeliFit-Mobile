@@ -12,6 +12,8 @@ import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.delifit.delifitmobile.R
+import com.delifit.delifitmobile.ui.search.SearchFragment
+import com.delifit.delifitmobile.ui.search.SearchFragmentDirections
 import com.delifit.delifitmobile.utils.Mocks.recipeList
 import com.delifit.delifitmobile.utils.launchFragmentInHiltContainer
 import dagger.hilt.android.testing.HiltAndroidRule

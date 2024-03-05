@@ -6,7 +6,6 @@
 package com.delifit.delifitmobile.core.di
 
 import com.delifit.delifitmobile.core.BuildConfig.BASE_URL
-import com.delifit.delifitmobile.core.data.network.utils.RecipesServices
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,8 +39,4 @@ object NetworkModule {
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-
-    @Provides
-    fun provideRecipesServices(retrofit: Retrofit): RecipesServices =
-        retrofit.create(RecipesServices::class.java)
 }

@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.map
+package com.delifit.delifitmobile.ui.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.delifit.delifitmobile.R
-import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentMapBinding
 import com.delifit.delifitmobile.utils.collect

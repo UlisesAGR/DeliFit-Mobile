@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 25/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.search
+package com.delifit.delifitmobile.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,10 +12,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentSearchBinding
-import com.delifit.delifitmobile.search.adapter.RecipeSearchAdapter
+import com.delifit.delifitmobile.ui.search.adapter.RecipeSearchAdapter
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.hideSoftKeyboard

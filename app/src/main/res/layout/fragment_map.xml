@@ -9,7 +9,7 @@
     android:id="@+id/mapLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".map.MapFragment">
+    tools:context=".ui.map.MapFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/mapToolbar"

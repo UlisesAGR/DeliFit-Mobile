@@ -9,7 +9,7 @@
     android:id="@+id/searchLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".search.SearchFragment">
+    tools:context=".ui.search.SearchFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchLayout"

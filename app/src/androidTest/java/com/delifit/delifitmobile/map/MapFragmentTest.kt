@@ -14,6 +14,7 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.MediumTest
 import com.delifit.delifitmobile.R
+import com.delifit.delifitmobile.ui.map.MapFragment
 import com.delifit.delifitmobile.utils.Mocks.recipe
 import com.delifit.delifitmobile.utils.launchFragmentInHiltContainer
 import com.google.android.gms.maps.SupportMapFragment

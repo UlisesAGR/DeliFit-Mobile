@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2023. All rights reserved.
  */
-package com.delifit.delifitmobile.detail
+package com.delifit.delifitmobile.ui.detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,12 +13,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.delifit.delifitmobile.container.viewmodel.ContainerViewModel
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.model.Steps
 import com.delifit.delifitmobile.databinding.FragmentDetailBinding
-import com.delifit.delifitmobile.detail.adapter.IngredientsListAdapter
-import com.delifit.delifitmobile.detail.adapter.StepsListAdapter
+import com.delifit.delifitmobile.ui.detail.adapter.IngredientsListAdapter
+import com.delifit.delifitmobile.ui.detail.adapter.StepsListAdapter
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.load
 import com.delifit.delifitmobile.utils.show

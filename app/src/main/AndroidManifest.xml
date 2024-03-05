@@ -24,7 +24,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
         <activity
-            android:name=".container.ContainerActivity"
+            android:name=".ui.container.ContainerActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/Splash.Theme.Starting"

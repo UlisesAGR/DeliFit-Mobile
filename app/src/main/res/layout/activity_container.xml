@@ -9,7 +9,7 @@
     android:id="@+id/containerLayoutRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".container.ContainerActivity">
+    tools:context=".ui.container.ContainerActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/containerFragmentContainerView"
@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/graph"
-        tools:context=".container.ContainerActivity" />
+        tools:context=".ui.container.ContainerActivity" />
 
     <com.delifit.delifitmobile.widgets.text.progres.Progress
         android:id="@+id/progressLayout"
