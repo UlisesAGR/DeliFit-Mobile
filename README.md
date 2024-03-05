@@ -99,8 +99,6 @@ Principal mente podriamos listar los conceptos utilizados en esta app
 <h1>Desing Partters</h1>
 *Utilice el patron "Singleton" para instanciar e inectar la clase "Retrofit"
 <br/>
-*Tambien use el patron "Adapter" para usar adaptadores
-<br/>
 *Ademas utilice el patron "Observer" con el uso de "Flows" para el tema de programacion reactiva
 <br/>
 *Otro que use fue el patron "Dependency Injection" para no meter clases dentro de otras clases y simplificar el testing con "hilt" 
@@ -109,8 +107,6 @@ Principal mente podriamos listar los conceptos utilizados en esta app
 <br/><br/>
 
 <b>Singleton</b>
-
-<b>Adapter</b>
 
 <b>Observer</b>
 - Flows
