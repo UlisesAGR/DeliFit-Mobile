@@ -23,9 +23,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContainerViewModel @Inject constructor(
-    private val resourceProvider: ResourceProvider,
     private val getIngredientsListUseCase: GetIngredientsListUseCase,
     private val getRecipesUseCase: GetRecipesUseCase,
+    private val resourceProvider: ResourceProvider,
 ) : ViewModel() {
     private var _containerState = MutableStateFlow(ContainerState())
     val containerState: StateFlow<ContainerState> = _containerState

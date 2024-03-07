@@ -48,9 +48,9 @@ class ContainerViewModelTest {
     fun setUp() {
         containerViewModel =
             ContainerViewModel(
-                resourceProvider,
                 getIngredientsListUseCase,
                 getRecipesUseCase,
+                resourceProvider,
             )
     }
 
