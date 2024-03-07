@@ -7,16 +7,17 @@ package com.delifit.delifitmobile.core.data.provider
 
 import android.content.Context
 import com.delifit.delifitmobile.core.domain.model.Ingredient
+import com.delifit.delifitmobile.core.domain.provider.IngredientProvider
 import com.delifit.delifitmobile.widgets.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class IngredientProvider @Inject constructor(
+class IngredientProviderImpl @Inject constructor(
     @ApplicationContext appContext: Context,
-) {
+) : IngredientProvider {
     private val resource = appContext.resources
 
-    fun getIngredients(): List<Ingredient> =
+    override fun getIngredients(): List<Ingredient> =
         listOf(
             Ingredient(
                 id = 1,

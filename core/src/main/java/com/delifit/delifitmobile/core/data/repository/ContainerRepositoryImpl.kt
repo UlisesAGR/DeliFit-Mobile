@@ -5,8 +5,8 @@
  */
 package com.delifit.delifitmobile.core.data.repository
 
-import com.delifit.delifitmobile.core.data.provider.IngredientProvider
 import com.delifit.delifitmobile.core.data.source.ContainerDataSource
+import com.delifit.delifitmobile.core.domain.provider.IngredientProvider
 import com.delifit.delifitmobile.core.domain.repository.ContainerRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flow

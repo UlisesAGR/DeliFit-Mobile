@@ -9,7 +9,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.delifit.delifitmobile.utils.AppLog
+import com.delifit.delifitmobile.utils.AppLog.Companion.log
 import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.widgets.R
 import com.delifit.delifitmobile.widgets.databinding.ProgressBinding
@@ -28,7 +28,7 @@ class Progress @JvmOverloads constructor(
             try {
                 setText(getString(R.styleable.Progress_textProgress))
             } catch (exception: Exception) {
-                AppLog.log.exception(
+                log.exception(
                     tag = this,
                     exception,
                 )

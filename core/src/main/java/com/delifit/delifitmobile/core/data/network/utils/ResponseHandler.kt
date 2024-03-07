@@ -7,7 +7,6 @@ package com.delifit.delifitmobile.core.data.network.utils
 
 import com.delifit.delifitmobile.core.data.network.response.ErrorResponse
 import com.delifit.delifitmobile.utils.Constants
-import com.delifit.delifitmobile.utils.Resource
 import com.google.gson.Gson
 import okhttp3.ResponseBody
 import retrofit2.HttpException
@@ -72,13 +71,6 @@ internal fun parseFailureResponse(
     }
     return FailureData(stringCode, type, detail, moreInfo)
 }
-
-data class FailureData(
-    val message: String? = null,
-    val type: String? = null,
-    val detail: String? = null,
-    val moreInfo: String? = null,
-)
 
 fun Throwable.parseError(): UseCaseException.GenericException =
     when (this) {

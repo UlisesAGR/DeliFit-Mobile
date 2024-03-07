@@ -1,9 +1,9 @@
 package com.delifit.delifitmobile.viewModel
 
-import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
-import com.delifit.delifitmobile.core.data.provider.TextsProvider
+import com.delifit.delifitmobile.core.domain.provider.ResourceProvider
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.utils.DispatcherRule
 import com.delifit.delifitmobile.utils.mock.IngredientMock.ingredientName
 import com.delifit.delifitmobile.utils.mock.IngredientMock.ingredientsList
@@ -37,7 +37,7 @@ class ContainerViewModelTest {
     private lateinit var getRecipesUseCase: GetRecipesUseCase
 
     @Mock
-    private lateinit var textsProvider: TextsProvider
+    private lateinit var resourceProvider: ResourceProvider
 
     private lateinit var containerViewModel: ContainerViewModel
 
@@ -48,9 +48,9 @@ class ContainerViewModelTest {
     fun setUp() {
         containerViewModel =
             ContainerViewModel(
+                resourceProvider,
                 getIngredientsListUseCase,
                 getRecipesUseCase,
-                textsProvider,
             )
     }
 
@@ -81,7 +81,7 @@ class ContainerViewModelTest {
         val expected = errorDetail
         //Given
         Mockito.`when`(getRecipesUseCase()).thenReturn(recipeFailureResultDataNull)
-        Mockito.`when`(textsProvider.getErrorGettingRecipesLabel()).thenReturn(errorDetail)
+        Mockito.`when`(resourceProvider.getErrorGettingRecipesLabel()).thenReturn(errorDetail)
         //When
         containerViewModel.getRecipes()
         //Then

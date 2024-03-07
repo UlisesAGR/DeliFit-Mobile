@@ -5,9 +5,9 @@
  */
 package com.delifit.delifitmobile.core.domain.repository
 
+import com.delifit.delifitmobile.core.data.network.utils.Resource
 import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
-import com.delifit.delifitmobile.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface ContainerRepository {

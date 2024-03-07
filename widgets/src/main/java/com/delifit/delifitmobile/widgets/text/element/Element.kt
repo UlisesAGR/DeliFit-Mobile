@@ -9,7 +9,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import com.delifit.delifitmobile.utils.AppLog
+import com.delifit.delifitmobile.utils.AppLog.Companion.log
 import com.delifit.delifitmobile.utils.LevelCooking
 import com.delifit.delifitmobile.utils.show
 import com.delifit.delifitmobile.utils.toLevelCooking
@@ -30,7 +30,7 @@ class Element @JvmOverloads constructor(
             try {
                 setImage(getResourceId(R.styleable.Element_imageCardElement, 0))
             } catch (exception: Exception) {
-                AppLog.log.exception(
+                log.exception(
                     tag = this,
                     exception,
                 )

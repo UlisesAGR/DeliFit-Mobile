@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 23/02/24
  * Copyright (c) 2024. All rights reserved.
  */
-package com.delifit.delifitmobile.utils
+package com.delifit.delifitmobile.core.data.network.utils
 
 sealed class Resource<out T>(
     val status: Int,
@@ -14,10 +14,6 @@ sealed class Resource<out T>(
     val moreInfo: String? = null,
     val cause: Throwable? = null,
 ) {
-    companion object {
-        const val SUCCESS = 200
-    }
-
     class Success<T>(
         data: T,
         details: String? = null,
@@ -46,4 +42,8 @@ sealed class Resource<out T>(
     )
 
     fun isSuccessful(): Boolean = status in 200..300
+
+    companion object {
+        const val SUCCESS = 200
+    }
 }

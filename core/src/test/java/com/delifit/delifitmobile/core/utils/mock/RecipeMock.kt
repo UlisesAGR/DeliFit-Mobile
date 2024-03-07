@@ -5,7 +5,7 @@ import com.delifit.delifitmobile.core.data.network.response.RecipesResponse
 import com.delifit.delifitmobile.core.data.network.response.StepsResponse
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.model.Steps
-import com.delifit.delifitmobile.utils.Resource
+import com.delifit.delifitmobile.core.data.network.utils.Resource
 import kotlinx.coroutines.flow.flowOf
 import retrofit2.Response
 

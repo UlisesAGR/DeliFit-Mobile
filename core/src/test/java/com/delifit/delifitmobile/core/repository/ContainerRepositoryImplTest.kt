@@ -1,8 +1,8 @@
 package com.delifit.delifitmobile.core.repository
 
-import com.delifit.delifitmobile.core.data.provider.IngredientProvider
 import com.delifit.delifitmobile.core.data.repository.ContainerRepositoryImpl
 import com.delifit.delifitmobile.core.data.source.ContainerDataSource
+import com.delifit.delifitmobile.core.domain.provider.IngredientProvider
 import com.delifit.delifitmobile.core.utils.DispatcherRule
 import com.delifit.delifitmobile.core.utils.mock.IngredientMock.ingredientsList
 import com.delifit.delifitmobile.core.utils.mock.RecipeMock.recipeList

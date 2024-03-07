@@ -8,8 +8,8 @@ package com.delifit.delifitmobile.ui.container.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.delifit.delifitmobile.core.data.network.utils.parseError
-import com.delifit.delifitmobile.core.data.provider.TextsProvider
 import com.delifit.delifitmobile.core.domain.model.Recipe
+import com.delifit.delifitmobile.core.domain.provider.ResourceProvider
 import com.delifit.delifitmobile.core.domain.usecase.GetIngredientsListUseCase
 import com.delifit.delifitmobile.core.domain.usecase.GetRecipesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,9 +23,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContainerViewModel @Inject constructor(
+    private val resourceProvider: ResourceProvider,
     private val getIngredientsListUseCase: GetIngredientsListUseCase,
     private val getRecipesUseCase: GetRecipesUseCase,
-    private val textsProvider: TextsProvider,
 ) : ViewModel() {
     private var _containerState = MutableStateFlow(ContainerState())
     val containerState: StateFlow<ContainerState> = _containerState
@@ -60,7 +60,8 @@ class ContainerViewModel @Inject constructor(
                         _containerState.update { state ->
                             state.copy(
                                 message =
-                                response.details ?: textsProvider.getErrorGettingRecipesLabel(),
+                                response.details
+                                    ?: resourceProvider.getErrorGettingRecipesLabel(),
                             )
                         }
                     }

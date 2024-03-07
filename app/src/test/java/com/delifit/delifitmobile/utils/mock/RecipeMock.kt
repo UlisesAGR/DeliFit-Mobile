@@ -2,7 +2,7 @@ package com.delifit.delifitmobile.utils.mock
 
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.core.domain.model.Steps
-import com.delifit.delifitmobile.utils.Resource
+import com.delifit.delifitmobile.core.data.network.utils.Resource
 import kotlinx.coroutines.flow.flowOf
 
 object RecipeMock {

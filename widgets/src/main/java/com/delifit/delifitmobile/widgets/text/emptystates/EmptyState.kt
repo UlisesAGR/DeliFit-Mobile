@@ -9,7 +9,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.delifit.delifitmobile.utils.AppLog
+import com.delifit.delifitmobile.utils.AppLog.Companion.log
 import com.delifit.delifitmobile.utils.Constants.ANIMATION_ALFA_HIDDEN
 import com.delifit.delifitmobile.utils.Constants.ANIMATION_ALFA_VISIBLE
 import com.delifit.delifitmobile.utils.show
@@ -33,7 +33,7 @@ class EmptyState @JvmOverloads constructor(
                 setDescription(getString(R.styleable.EmptyState_descriptionEmptyStateList))
                 setTitle(getString(R.styleable.EmptyState_titleEmptyStateList))
             } catch (exception: Exception) {
-                AppLog.log.exception(
+                log.exception(
                     tag = this,
                     exception,
                 )
