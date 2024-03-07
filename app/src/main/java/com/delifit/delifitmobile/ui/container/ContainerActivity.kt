@@ -10,8 +10,8 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.delifit.delifitmobile.R
-import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.databinding.ActivityContainerBinding
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.utils.collect
 import com.delifit.delifitmobile.utils.materialDialog
 import com.delifit.delifitmobile.utils.progressVisibility
@@ -45,10 +45,9 @@ class ContainerActivity : AppCompatActivity() {
         }
     }
 
-    private fun setViewVisibility(loading: Boolean) =
-        with(binding) {
-            progressLayout.progressVisibility(loading)
-        }
+    private fun setViewVisibility(loading: Boolean) {
+        binding.progressLayout.progressVisibility(loading)
+    }
 
     private fun showDialog(message: String) {
         materialDialog(
