@@ -12,10 +12,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.core.domain.model.Ingredient
 import com.delifit.delifitmobile.core.domain.model.Recipe
 import com.delifit.delifitmobile.databinding.FragmentHomeBinding
+import com.delifit.delifitmobile.ui.container.viewmodel.ContainerViewModel
 import com.delifit.delifitmobile.ui.home.adapter.ingredient.IngredientAdapter
 import com.delifit.delifitmobile.ui.home.adapter.recipe.RecipeAdapter
 import com.delifit.delifitmobile.utils.Constants.EMPTY_STRING
@@ -129,10 +129,11 @@ class HomeFragment : Fragment() {
         ingredientsAdapter.setList(ingredientsList)
     }
 
-    fun validateLayoutVisibility(size: Int) {
-        binding.homeLayout.layoutVisibilityItemCount(size)
-        binding.homeEmptyState.emptyStateVisibilityItemCount(size)
-    }
+    fun validateLayoutVisibility(size: Int) =
+        with(binding) {
+            homeLayout.layoutVisibilityItemCount(size)
+            homeEmptyState.emptyStateVisibilityItemCount(size)
+        }
 
     private fun resetFilterToClick() {
         ingredientsAdapter.resetSelectedItem()
