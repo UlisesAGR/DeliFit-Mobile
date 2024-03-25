@@ -3,7 +3,7 @@
  * Created by Ulises Gonzalez on 07/03/24
  * Copyright (c) 2024. All rights reserved.
  */
-package com.delifit.delifitmobile.core.data.network.utils
+package com.delifit.delifitmobile.core.domain.model
 
 data class FailureData(
     val message: String?,

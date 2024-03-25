@@ -6,6 +6,7 @@
 package com.delifit.delifitmobile.core.data.network.utils
 
 import com.delifit.delifitmobile.core.data.network.response.ErrorResponse
+import com.delifit.delifitmobile.core.domain.model.FailureData
 import com.delifit.delifitmobile.utils.Constants
 import com.google.gson.Gson
 import okhttp3.ResponseBody
@@ -22,8 +23,8 @@ fun <R, T> Response<R>.toResult(action: R.() -> T) = toResource(this, action)
 private fun <R, T> toResource(
     it: Response<R>,
     action: R.() -> T,
-): Resource<T> {
-    return if (it.isSuccessful) {
+): Resource<T> =
+    if (it.isSuccessful) {
         it.body()?.run {
             Resource.Success(action())
         } ?: Resource.Failure(
@@ -41,7 +42,6 @@ private fun <R, T> toResource(
             type = type,
         )
     }
-}
 
 internal fun parseFailureResponse(
     errorCode: Int,
